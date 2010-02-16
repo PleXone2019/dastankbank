@@ -31,22 +31,17 @@ namespace DaStankBankUploader
             Properties.Settings.Default.Save();
         }
 
-        public bool login()
+        public void login()
         {
-            if (hasData)
-            {
-                settings = new YouTubeRequestSettings(
-                    "Da Stank Bank",
-                    Program.ytDevKey, this.ytUser, this.ytPass);
-                request = new YouTubeRequest(settings);
+            ytLogin();
+        }
 
-                return true;
-            }
-            else
-            {
-                //TODO change to a custom exception
-                throw new Exception("No User Data");
-            }
+        private void ytLogin()
+        {
+            Console.Write("[yt] Logging in to: " + this.ytUser + " ...");
+            settings = new YouTubeRequestSettings("Da Stank Bank", Program.ytDevKey, this.ytUser, this.ytPass);
+            request = new YouTubeRequest(settings);
+            Console.WriteLine("done.");
         }
     }
 }
