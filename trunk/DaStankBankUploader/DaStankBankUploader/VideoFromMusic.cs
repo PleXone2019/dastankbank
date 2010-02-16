@@ -85,7 +85,7 @@ namespace DaStankBankUploader
                 // render our video out to avi
                 Console.Write("Render...");
                 renderer = new Splicer.Renderer.WindowsMediaRenderer(
-                    timeline, videopath, WindowsMediaProfiles.YouTubeVideo, videoProgress, audioProgress);
+                    timeline, videopath, WindowsMediaProfiles.HighQualityVideo, videoProgress, audioProgress);
                 renderer.Render();
                 //AsyncCallback cb = new AsyncCallback(CallBack);
                 //IAsyncResult ar = renderer.BeginRender(cb, renderer.State);
