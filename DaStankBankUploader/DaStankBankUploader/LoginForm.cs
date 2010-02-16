@@ -33,9 +33,10 @@ namespace DaStankBankUploader
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // create a new user object and log in
-            Program.u = new User(txtYTuser.Text, txtYTpass.Text, txtWPuser.Text, txtWPpass.Text);
+            User.login(txtYTuser.Text, txtYTpass.Text, txtWPuser.Text, txtWPpass.Text);
 
-            Program.u.login();
+            this.Close();
+            this.Dispose();
         }
     }
 }
