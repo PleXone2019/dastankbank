@@ -31,7 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DirectShowLib-2005, Version=2.0.0.0, Culture=neutral, PublicKeyToken=67e7b740cdfc2d3f, processorArchitecture=MSIL" />
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Google.GData.Client, Version=1.5.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL" />
+    <Reference Include="Google.GData.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=0b4c5df2ebf20876, processorArchitecture=MSIL" />
+    <Reference Include="Google.GData.YouTube, Version=1.5.0.0, Culture=neutral, PublicKeyToken=af04a32718ae8833, processorArchitecture=MSIL" />
+    <Reference Include="Splicer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a66524ed949429f4, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -71,6 +76,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="libs\wavdest.ax" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,6 +86,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libs\DirectShowLib-2005.dll" />
+    <Content Include="libs\Google.GData.Client.dll" />
+    <Content Include="libs\Google.GData.Extensions.dll" />
+    <Content Include="libs\Google.GData.YouTube.dll" />
+    <Content Include="libs\Splicer.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
