@@ -195,7 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Splicer.snk" />
-    <EmbeddedResource Include="WindowsMedia\YouTubeVideo.prx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
