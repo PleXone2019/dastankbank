@@ -8,6 +8,13 @@ namespace DaStankBankUploader
     static class Program
     {
         /// <summary>
+        /// A user...
+        /// </summary>
+        public static User u;
+
+        public static string ytDevKey = "AI39si7cCBBlWGtvH-LoOXo_d4qh6jkZWOyjJbeUA9HIBA_olm8hojE7gkeYo1ix0rEtiCT4eAzCe5dDksKyFtL1AukYms_xMA";
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]

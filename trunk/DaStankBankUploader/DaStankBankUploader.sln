@@ -2,6 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaStankBankUploader", "DaStankBankUploader\DaStankBankUploader.csproj", "{5F58031F-C338-4351-A3DA-CD9CBE12AF48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF} = {77C46D9D-1BC1-4CAF-87CF-9242721066EF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splicer", "splicer-source-1.0.0.0\Splicer\Splicer.csproj", "{77C46D9D-1BC1-4CAF-87CF-9242721066EF}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -10,13 +15,34 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Debug-Signed|Any CPU = Debug-Signed|Any CPU
+		Debug-Signed|x86 = Debug-Signed|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Debug-Signed|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Debug-Signed|Any CPU.Build.0 = Debug|Any CPU
+		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Debug-Signed|x86.ActiveCfg = Debug|Any CPU
 		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F58031F-C338-4351-A3DA-CD9CBE12AF48}.Release|x86.ActiveCfg = Release|Any CPU
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Debug|x86.ActiveCfg = Debug|x86
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Debug|x86.Build.0 = Debug|x86
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Debug-Signed|Any CPU.ActiveCfg = Debug-Signed|Any CPU
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Debug-Signed|Any CPU.Build.0 = Debug-Signed|Any CPU
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Debug-Signed|x86.ActiveCfg = Debug-Signed|x86
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Debug-Signed|x86.Build.0 = Debug-Signed|x86
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Release|x86.ActiveCfg = Release|x86
+		{77C46D9D-1BC1-4CAF-87CF-9242721066EF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
