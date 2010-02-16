@@ -94,5 +94,17 @@ namespace DaStankBankUploader.Properties {
                 this["outputpath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string bgimage {
+            get {
+                return ((string)(this["bgimage"]));
+            }
+            set {
+                this["bgimage"] = value;
+            }
+        }
     }
 }
