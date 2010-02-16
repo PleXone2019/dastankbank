@@ -79,5 +79,16 @@ namespace DaStankBankUploader
         {
 
         }
+
+        /// <summary>
+        /// Begin the rendering process and then upload
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.outputpath = txtOutputDir.Text;
+            Properties.Settings.Default.Save();
+        }
     }
 }

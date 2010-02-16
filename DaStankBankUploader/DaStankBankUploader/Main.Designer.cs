@@ -73,7 +73,7 @@
             this.btnAddFile.Name = "btnAddFile";
             this.btnAddFile.Size = new System.Drawing.Size(100, 33);
             this.btnAddFile.TabIndex = 2;
-            this.btnAddFile.Text = "Add File";
+            this.btnAddFile.Text = "Add File(s)";
             this.btnAddFile.UseVisualStyleBackColor = true;
             this.btnAddFile.Click += new System.EventHandler(this.btnAddFile_Click);
             // 
@@ -103,6 +103,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Render and Upload";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -149,7 +150,7 @@
             this.selectAllToolStripMenuItem,
             this.deselectAllToolStripMenuItem});
             this.menuListRightClick.Name = "menuListRightClick";
-            this.menuListRightClick.Size = new System.Drawing.Size(153, 70);
+            this.menuListRightClick.Size = new System.Drawing.Size(151, 48);
             // 
             // selectAllToolStripMenuItem
             // 
