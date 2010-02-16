@@ -20,6 +20,7 @@ namespace DaStankBankUploader
             {
                 txtWPpass.Text = Properties.Settings.Default.wpPass;
                 txtWPuser.Text = Properties.Settings.Default.wpUser;
+                txtWPUrl.Text = Properties.Settings.Default.wpURL;
                 txtYTpass.Text = Properties.Settings.Default.ytPass;
                 txtYTuser.Text = Properties.Settings.Default.ytUser;
             }
@@ -33,7 +34,7 @@ namespace DaStankBankUploader
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // create a new user object and log in
-            User.login(txtYTuser.Text, txtYTpass.Text, txtWPuser.Text, txtWPpass.Text);
+            User.login(txtYTuser.Text, txtYTpass.Text, txtWPuser.Text, txtWPpass.Text, txtWPUrl.Text);
 
             this.Close();
             this.Dispose();
