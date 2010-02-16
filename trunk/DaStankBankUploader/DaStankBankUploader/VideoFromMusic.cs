@@ -24,21 +24,25 @@ namespace DaStankBankUploader
         private string backgroundImage = "";
         public IRenderer renderer;
 
-        PercentageProgressParticipant[] audioProgress;
-        PercentageProgressParticipant[] videoProgress;
+        PercentageProgressParticipant[] audioProgress = new PercentageProgressParticipant[1];
+        PercentageProgressParticipant[] videoProgress = new PercentageProgressParticipant[1];
 
-        public VideoFromMusic(string PathToMP3File, string backgroundImage)
+        /// <summary>
+        /// A video to be created from a music file.
+        /// </summary>
+        /// <param name="PathToMP3File">the path to the mp3 file to make into a video</param>
+        /// <param name="backgroundImage">the background (static) image's path to use in the video</param>
+        /// <param name="outpath">where to save the file</param>
+        public VideoFromMusic(string PathToMP3File, string backgroundImage, string outpath)
         {
-            audioProgress = new PercentageProgressParticipant[1];
-            videoProgress = new PercentageProgressParticipant[1];
-
             // get all the path data
             mp3path = Path.GetFullPath(PathToMP3File);
             mp3name = Path.GetFileNameWithoutExtension(PathToMP3File);
             this.backgroundImage = Path.GetFullPath(backgroundImage);
-            //videoname = mp3name + ".avi";
-            videoname = Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + ".avi";
-            videopath = Path.Combine(Path.GetDirectoryName(mp3path), videoname);
+            videoname = mp3name + ".avi";
+            //videoname = Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + ".avi";
+            //videopath = Path.Combine(Path.GetDirectoryName(mp3path), videoname);
+            videopath = Path.Combine(Path.GetDirectoryName(outpath), videoname);
 
             Console.WriteLine("Video From Music");
             Console.WriteLine("mp3path: " + mp3path);
@@ -51,7 +55,8 @@ namespace DaStankBankUploader
         /// <summary>
         /// Render the video from the music file/background image, asynchronously.
         /// 
-        /// Attach event handlers to audioProgress[0] and videoProgress[0] to monitor progress.
+        /// Attach event handlers to audioProgress[0] and videoProgress[0] to monitor 
+        /// progress, AFTER this function has been called!
         /// </summary>
         public void Render()
         {
@@ -88,6 +93,7 @@ namespace DaStankBankUploader
                     timeline, videopath, WindowsMediaProfiles.HighQualityVideo, 
                     videoProgress, audioProgress);
                 //renderer.Render();
+
                 AsyncCallback cb = new AsyncCallback(CallBack);
                 IAsyncResult ar = renderer.BeginRender(cb, renderer.State);
             }
