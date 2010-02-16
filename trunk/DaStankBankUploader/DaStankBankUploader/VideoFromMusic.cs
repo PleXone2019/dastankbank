@@ -24,13 +24,13 @@ namespace DaStankBankUploader
         private string backgroundImage = "";
         public IRenderer renderer;
 
-        ICallbackParticipant[] audioProgress;
-        ICallbackParticipant[] videoProgress;
+        PercentageProgressParticipant[] audioProgress;
+        PercentageProgressParticipant[] videoProgress;
 
         public VideoFromMusic(string PathToMP3File, string backgroundImage)
         {
-            audioProgress = new ICallbackParticipant[1];
-            videoProgress = new ICallbackParticipant[1];
+            audioProgress = new PercentageProgressParticipant[1];
+            videoProgress = new PercentageProgressParticipant[1];
 
             // get all the path data
             mp3path = Path.GetFullPath(PathToMP3File);
@@ -46,16 +46,16 @@ namespace DaStankBankUploader
             Console.WriteLine("backgroundImage: " + this.backgroundImage);
             Console.WriteLine("videoName: " + videoname);
             Console.WriteLine("videopath: " + videopath);
-
-            Render();
         }
 
         /// <summary>
-        /// Render the video from the music file/background image
+        /// Render the video from the music file/background image, asynchronously.
+        /// 
+        /// Attach event handlers to audioProgress[0] and videoProgress[0] to monitor progress.
         /// </summary>
         public void Render()
         {
-            Console.WriteLine("\n\nBegin render...");
+            Console.WriteLine("\nBegin render...");
             using (ITimeline timeline = new DefaultTimeline())
             {
                 Console.Write("Create group...");
@@ -83,21 +83,19 @@ namespace DaStankBankUploader
                 videoProgress[0] = new PercentageProgressParticipant(timeline);
 
                 // render our video out to avi
-                Console.Write("Render...");
+                Console.Write("Render Start...");
                 renderer = new Splicer.Renderer.WindowsMediaRenderer(
                     timeline, videopath, WindowsMediaProfiles.HighQualityVideo, videoProgress, audioProgress);
-                renderer.Render();
-                //AsyncCallback cb = new AsyncCallback(CallBack);
-                //IAsyncResult ar = renderer.BeginRender(cb, renderer.State);
-                Console.WriteLine("done.");
+                //renderer.Render();
+                AsyncCallback cb = new AsyncCallback(CallBack);
+                IAsyncResult ar = renderer.BeginRender(cb, renderer.State);
             }
         }
 
         private void CallBack(IAsyncResult ar)
         {
-            Console.WriteLine("--- CALLBACK STARTED");
-            //renderer.EndRender(ar);
-            Console.WriteLine("--- CALLBACK ENDED");
+            renderer.EndRender(ar);
+            Console.WriteLine("Render Completed.");
         }
     }
 }
