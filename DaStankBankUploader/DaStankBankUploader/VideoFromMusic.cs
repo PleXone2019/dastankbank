@@ -24,13 +24,20 @@ namespace DaStankBankUploader
         private string backgroundImage = "";
         public IRenderer renderer;
 
+        ICallbackParticipant[] audioProgress;
+        ICallbackParticipant[] videoProgress;
+
         public VideoFromMusic(string PathToMP3File, string backgroundImage)
         {
+            audioProgress = new ICallbackParticipant[1];
+            videoProgress = new ICallbackParticipant[1];
+
             // get all the path data
             mp3path = Path.GetFullPath(PathToMP3File);
             mp3name = Path.GetFileNameWithoutExtension(PathToMP3File);
             this.backgroundImage = Path.GetFullPath(backgroundImage);
-            videoname = mp3name + ".avi";
+            //videoname = mp3name + ".avi";
+            videoname = Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + ".avi";
             videopath = Path.Combine(Path.GetDirectoryName(mp3path), videoname);
 
             Console.WriteLine("Video From Music");
@@ -71,14 +78,26 @@ namespace DaStankBankUploader
                 IClip clip1 = videoTrack.AddImage(this.backgroundImage, 0, audio.Duration);
                 Console.WriteLine("done.");
 
+                // set up progress indicators
+                audioProgress[0] = new PercentageProgressParticipant(timeline);
+                videoProgress[0] = new PercentageProgressParticipant(timeline);
+
                 // render our video out to avi
                 Console.Write("Render...");
-                renderer = new Splicer.Renderer.AviFileRenderer(
-                    timeline, this.videopath, DirectShowLib.
-                    );
+                renderer = new Splicer.Renderer.WindowsMediaRenderer(
+                    timeline, videopath, WindowsMediaProfiles.YouTubeVideo, videoProgress, audioProgress);
                 renderer.Render();
+                //AsyncCallback cb = new AsyncCallback(CallBack);
+                //IAsyncResult ar = renderer.BeginRender(cb, renderer.State);
                 Console.WriteLine("done.");
             }
+        }
+
+        private void CallBack(IAsyncResult ar)
+        {
+            Console.WriteLine("--- CALLBACK STARTED");
+            //renderer.EndRender(ar);
+            Console.WriteLine("--- CALLBACK ENDED");
         }
     }
 }
