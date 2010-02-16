@@ -19,6 +19,11 @@ namespace Splicer.WindowsMedia
 {
     public static class WindowsMediaProfiles
     {
+        public static string YouTubeVideo
+        {
+            get { return ReadStream("YouTubeVideo.prx"); }
+        }
+
         public static string HighQualityVideo
         {
             get { return ReadStream("HighQualityVideo.prx"); }
@@ -38,7 +43,6 @@ namespace Splicer.WindowsMedia
         {
             get { return ReadStream("MediumQualityAudio.prx"); }
         }
-
 
         private static string ReadStream(string profileName)
         {
