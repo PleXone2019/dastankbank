@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace DaStankBankUploader
 {
-    public partial class Main : Form
+    public partial class LoginForm : Form
     {
-        public Main()
+        public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void txtEditBoxes_TextChanged(object sender, EventArgs e)
+        {
+            ((TextBox)sender).ForeColor = Color.Black;
         }
     }
 }
