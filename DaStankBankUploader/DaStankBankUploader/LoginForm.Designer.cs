@@ -43,9 +43,9 @@
             this.lblYoutube.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYoutube.Location = new System.Drawing.Point(12, 9);
             this.lblYoutube.Name = "lblYoutube";
-            this.lblYoutube.Size = new System.Drawing.Size(126, 39);
+            this.lblYoutube.Size = new System.Drawing.Size(127, 39);
             this.lblYoutube.TabIndex = 0;
-            this.lblYoutube.Text = "Youtube";
+            this.lblYoutube.Text = "youtube";
             // 
             // lblWordpress
             // 
@@ -53,9 +53,9 @@
             this.lblWordpress.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWordpress.Location = new System.Drawing.Point(12, 127);
             this.lblWordpress.Name = "lblWordpress";
-            this.lblWordpress.Size = new System.Drawing.Size(160, 39);
+            this.lblWordpress.Size = new System.Drawing.Size(156, 39);
             this.lblWordpress.TabIndex = 1;
-            this.lblWordpress.Text = "Wordpress";
+            this.lblWordpress.Text = "wordpress";
             // 
             // txtYTuser
             // 
