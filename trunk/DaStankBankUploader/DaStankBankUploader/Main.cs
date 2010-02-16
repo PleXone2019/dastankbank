@@ -15,11 +15,22 @@ namespace DaStankBankUploader
         {
             InitializeComponent();
 
+            // get the user to log in...we need the data for later!
+            LoginForm f = new LoginForm();
+            f.ShowDialog();
+
             if (!User.loggedIn)
             {
-                LoginForm f = new LoginForm();
-                f.ShowDialog();
+                Console.WriteLine("Quit!");
+
+                // user probably close dialog, quit
+                Application.Exit();
+                Environment.Exit(0);
             }
+
+            // if we get to this point, we're logged in and good to go so time
+            // to load saved data
+            txtOutputDir.Text = Properties.Settings.Default.outputpath;
         }
 
         /// <summary>
@@ -89,6 +100,32 @@ namespace DaStankBankUploader
         {
             Properties.Settings.Default.outputpath = txtOutputDir.Text;
             Properties.Settings.Default.Save();
+
+            // hide button, show progress stuff
+            btnRender.Visible = false;
+
+            lblCurrent.Visible = true;
+            lblTotal.Visible = true;
+            pbarCurFile.Visible = true;
+            pbarTotal.Visible = true;
+            btnCancel.Visible = true;
+
+            foreach (String i in listFiles.CheckedItems)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            // hide progress stuff, show button
+            btnRender.Visible = true;
+
+            lblCurrent.Visible = false;
+            lblTotal.Visible = false;
+            pbarCurFile.Visible = false;
+            pbarTotal.Visible = false;
+            btnCancel.Visible = false;
         }
     }
 }
