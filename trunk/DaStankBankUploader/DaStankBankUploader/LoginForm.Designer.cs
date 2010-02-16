@@ -35,6 +35,7 @@
             this.txtWPpass = new System.Windows.Forms.TextBox();
             this.txtWPuser = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.txtWPUrl = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblYoutube
@@ -113,7 +114,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(19, 247);
+            this.btnLogin.Location = new System.Drawing.Point(19, 303);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(185, 50);
             this.btnLogin.TabIndex = 7;
@@ -121,12 +122,25 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // txtWPUrl
+            // 
+            this.txtWPUrl.BackColor = System.Drawing.SystemColors.Control;
+            this.txtWPUrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtWPUrl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWPUrl.ForeColor = System.Drawing.Color.LightGray;
+            this.txtWPUrl.Location = new System.Drawing.Point(19, 247);
+            this.txtWPUrl.Name = "txtWPUrl";
+            this.txtWPUrl.Size = new System.Drawing.Size(185, 33);
+            this.txtWPUrl.TabIndex = 8;
+            this.txtWPUrl.Text = "www.url.to/wordpress";
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(222, 316);
+            this.ClientSize = new System.Drawing.Size(222, 371);
+            this.Controls.Add(this.txtWPUrl);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtWPpass);
             this.Controls.Add(this.txtWPuser);
@@ -157,6 +171,7 @@
         private System.Windows.Forms.TextBox txtWPpass;
         private System.Windows.Forms.TextBox txtWPuser;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.TextBox txtWPUrl;
     }
 }
 

@@ -23,5 +23,8 @@
     <Setting Name="bgimage" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="wpURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.theootz.com/dastankbank/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

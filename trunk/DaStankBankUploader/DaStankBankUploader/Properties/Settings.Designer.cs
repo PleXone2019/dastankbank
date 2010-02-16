@@ -106,5 +106,17 @@ namespace DaStankBankUploader.Properties {
                 this["bgimage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://www.theootz.com/dastankbank/")]
+        public string wpURL {
+            get {
+                return ((string)(this["wpURL"]));
+            }
+            set {
+                this["wpURL"] = value;
+            }
+        }
     }
 }

@@ -12,18 +12,20 @@ namespace DaStankBankUploader
         static String ytPass = "";
         static String wpUser = "";
         static String wpPass = "";
+        static String wpURL = "";
         public static bool loggedIn = false;
 
         static YouTubeRequestSettings settings;
         static YouTubeRequest request;
 
-        public static void login(string ytUser, string ytPass, string wpUser, string wpPass)
+        public static void login(string ytUser, string ytPass, string wpUser, string wpPass, string wpURL)
         {
             // save/set data
             Properties.Settings.Default.ytUser = User.ytUser = ytUser;
             Properties.Settings.Default.ytPass = User.ytPass = ytPass;
             Properties.Settings.Default.wpUser = User.wpUser = wpUser;
             Properties.Settings.Default.wpPass = User.wpPass = wpPass;
+            Properties.Settings.Default.wpURL = User.wpURL = wpURL;
             Properties.Settings.Default.firstTime = false;
             Properties.Settings.Default.Save();
 
