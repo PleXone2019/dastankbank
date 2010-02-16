@@ -7,11 +7,6 @@ namespace DaStankBankUploader
 {
     static class Program
     {
-        /// <summary>
-        /// A user...
-        /// </summary>
-        public static User u;
-
         public static string ytDevKey = "AI39si7cCBBlWGtvH-LoOXo_d4qh6jkZWOyjJbeUA9HIBA_olm8hojE7gkeYo1ix0rEtiCT4eAzCe5dDksKyFtL1AukYms_xMA";
 
         /// <summary>
@@ -22,7 +17,7 @@ namespace DaStankBankUploader
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new Main());
         }
     }
 }

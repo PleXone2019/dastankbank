@@ -6,40 +6,36 @@ using Google.YouTube;
 
 namespace DaStankBankUploader
 {
-    class User
+    static class User
     {
-        String ytUser = "";
-        String ytPass = "";
-        String wpUser = "";
-        String wpPass = "";
-        bool hasData = false;
+        static String ytUser = "";
+        static String ytPass = "";
+        static String wpUser = "";
+        static String wpPass = "";
+        public static bool loggedIn = false;
 
-        YouTubeRequestSettings settings;
-        YouTubeRequest request;
+        static YouTubeRequestSettings settings;
+        static YouTubeRequest request;
 
-        public User(string ytUser, string ytPass, string wpUser, string wpPass)
+        public static void login(string ytUser, string ytPass, string wpUser, string wpPass)
         {
-            Properties.Settings.Default.ytUser = this.ytUser = ytUser;
-            Properties.Settings.Default.ytPass = this.ytPass = ytPass;
-            Properties.Settings.Default.wpUser = this.wpUser = wpUser;
-            Properties.Settings.Default.wpPass = this.wpPass = wpPass;
-
+            // save/set data
+            Properties.Settings.Default.ytUser = User.ytUser = ytUser;
+            Properties.Settings.Default.ytPass = User.ytPass = ytPass;
+            Properties.Settings.Default.wpUser = User.wpUser = wpUser;
+            Properties.Settings.Default.wpPass = User.wpPass = wpPass;
             Properties.Settings.Default.firstTime = false;
-
-            hasData = true;
-
             Properties.Settings.Default.Save();
-        }
 
-        public void login()
-        {
             ytLogin();
+
+            loggedIn = true;
         }
 
-        private void ytLogin()
+        private static void ytLogin()
         {
-            Console.Write("[yt] Logging in to: " + this.ytUser + " ...");
-            settings = new YouTubeRequestSettings("Da Stank Bank", Program.ytDevKey, this.ytUser, this.ytPass);
+            Console.Write("[yt] Logging in to: " + User.ytUser + " ...");
+            settings = new YouTubeRequestSettings("Da Stank Bank", Program.ytDevKey, User.ytUser, User.ytPass);
             request = new YouTubeRequest(settings);
             Console.WriteLine("done.");
         }
