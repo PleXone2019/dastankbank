@@ -14,6 +14,8 @@ namespace DaStankBankUploader
         public Main()
         {
             InitializeComponent();
+            lblAudio.Visible = false;
+            lblVideo.Visible = false;
 
             // get the user to log in...we need the data for later!
             LoginForm f = new LoginForm();
@@ -97,6 +99,8 @@ namespace DaStankBankUploader
             // hide button, show progress stuff
             btnRender.Visible = false;
 
+            lblAudio.Visible = true;
+            lblVideo.Visible = true;
             lblCurrent.Visible = true;
             lblTotal.Visible = true;
             pbarCurFileA.Visible = true;
@@ -124,6 +128,9 @@ namespace DaStankBankUploader
             // hide progress stuff, show button
             btnRender.Visible = true;
 
+
+            lblAudio.Visible = false;
+            lblVideo.Visible = false;
             lblCurrent.Visible = false;
             lblTotal.Visible = false;
             pbarCurFileA.Visible = false;

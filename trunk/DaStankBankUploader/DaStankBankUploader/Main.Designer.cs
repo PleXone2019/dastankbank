@@ -49,6 +49,8 @@
             this.btnChooseBG = new System.Windows.Forms.Button();
             this.lblHorizLine = new System.Windows.Forms.Label();
             this.pbarCurFileV = new System.Windows.Forms.ProgressBar();
+            this.lblAudio = new System.Windows.Forms.Label();
+            this.lblVideo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listFiles
@@ -122,9 +124,9 @@
             // 
             // pbarCurFileA
             // 
-            this.pbarCurFileA.Location = new System.Drawing.Point(103, 246);
+            this.pbarCurFileA.Location = new System.Drawing.Point(141, 246);
             this.pbarCurFileA.Name = "pbarCurFileA";
-            this.pbarCurFileA.Size = new System.Drawing.Size(437, 15);
+            this.pbarCurFileA.Size = new System.Drawing.Size(399, 15);
             this.pbarCurFileA.TabIndex = 11;
             this.pbarCurFileA.Visible = false;
             // 
@@ -246,11 +248,31 @@
             // 
             // pbarCurFileV
             // 
-            this.pbarCurFileV.Location = new System.Drawing.Point(103, 262);
+            this.pbarCurFileV.Location = new System.Drawing.Point(141, 262);
             this.pbarCurFileV.Name = "pbarCurFileV";
-            this.pbarCurFileV.Size = new System.Drawing.Size(437, 15);
+            this.pbarCurFileV.Size = new System.Drawing.Size(399, 15);
             this.pbarCurFileV.TabIndex = 19;
             this.pbarCurFileV.Visible = false;
+            // 
+            // lblAudio
+            // 
+            this.lblAudio.AutoSize = true;
+            this.lblAudio.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAudio.Location = new System.Drawing.Point(100, 247);
+            this.lblAudio.Name = "lblAudio";
+            this.lblAudio.Size = new System.Drawing.Size(39, 14);
+            this.lblAudio.TabIndex = 20;
+            this.lblAudio.Text = "Audio";
+            // 
+            // lblVideo
+            // 
+            this.lblVideo.AutoSize = true;
+            this.lblVideo.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVideo.Location = new System.Drawing.Point(100, 262);
+            this.lblVideo.Name = "lblVideo";
+            this.lblVideo.Size = new System.Drawing.Size(39, 14);
+            this.lblVideo.TabIndex = 21;
+            this.lblVideo.Text = "Video";
             // 
             // Main
             // 
@@ -258,6 +280,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 340);
             this.Controls.Add(this.pbarCurFileV);
+            this.Controls.Add(this.lblVideo);
+            this.Controls.Add(this.pbarCurFileA);
+            this.Controls.Add(this.lblAudio);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnChooseBG);
@@ -268,7 +293,6 @@
             this.Controls.Add(this.pbarTotal);
             this.Controls.Add(this.txtBGImage);
             this.Controls.Add(this.txtOutputDir);
-            this.Controls.Add(this.pbarCurFileA);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnRender);
@@ -313,5 +337,7 @@
         private System.Windows.Forms.Button btnChooseBG;
         private System.Windows.Forms.Label lblHorizLine;
         private System.Windows.Forms.ProgressBar pbarCurFileV;
+        private System.Windows.Forms.Label lblAudio;
+        private System.Windows.Forms.Label lblVideo;
     }
 }
