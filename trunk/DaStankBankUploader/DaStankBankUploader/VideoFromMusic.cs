@@ -87,22 +87,28 @@ namespace DaStankBankUploader
                 audioProgress[0] = new PercentageProgressParticipant(timeline);
                 videoProgress[0] = new PercentageProgressParticipant(timeline);
 
-                // render our video out to avi
+                // render our video out
                 Console.Write("Render Start...");
                 renderer = new Splicer.Renderer.WindowsMediaRenderer(
                     timeline, videopath, WindowsMediaProfiles.HighQualityVideo, 
                     videoProgress, audioProgress);
-                //renderer.Render();
+                renderer.Render();
+                Console.WriteLine("Render Completed.");
 
-                AsyncCallback cb = new AsyncCallback(CallBack);
-                IAsyncResult ar = renderer.BeginRender(cb, renderer.State);
+                //AsyncCallback cb = new AsyncCallback(CallBack);
+                //IAsyncResult ar = renderer.BeginRender(cb, renderer.State);
             }
         }
 
+        /*
         private void CallBack(IAsyncResult ar)
         {
             renderer.EndRender(ar);
+
+            // block until done
+            while (renderer.State != RendererState.GraphCompleted) { }
             Console.WriteLine("Render Completed.");
         }
+         * */
     }
 }

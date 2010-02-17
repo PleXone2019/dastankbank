@@ -104,12 +104,19 @@ namespace DaStankBankUploader
             pbarTotal.Visible = true;
             btnCancel.Visible = true;
 
+            pbarTotal.Maximum = listFiles.Items.Count;
+            pbarTotal.Value = 0;
+
             // do rendering stuff here
-            ((listMusicItem)listFiles.Items[0]).Render(
-                pbarCurFileA, 
-                pbarCurFileV,
-                txtBGImage.Text, 
-                txtOutputDir.Text);
+            foreach (listMusicItem i in listFiles.Items)
+            {
+                pbarCurFileA.Value = 0;
+                pbarCurFileV.Value = 0;
+
+                i.Render(pbarCurFileA, pbarCurFileV, txtBGImage.Text, txtOutputDir.Text);
+
+                pbarTotal.Value = pbarTotal.Value + 1;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -201,21 +208,14 @@ namespace DaStankBankUploader
             Console.Write("V: ");
             ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
             pbarV.Invoke(d, new object[] { (int)Math.Round((e.Progress * 100), 0), pbarV });
-            //pbarV.Value = (int)Math.Round((e.Progress * 100), 0);
             Console.WriteLine(pbarV.Value);
         }
 
         void listMusicItem_ProgressChangedAudio(object sender, Splicer.Renderer.ProgressChangedEventArgs e)
         {
-            /*
-            Console.Write("A: ");
-            pbarA.Value = (int)Math.Round((e.Progress * 100), 0);
-            Console.WriteLine(pbarA.Value);
-             * */
             Console.Write("A: ");
             ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
             pbarA.Invoke(d, new object[] { (int)Math.Round((e.Progress * 100), 0), pbarA });
-            //pbarV.Value = (int)Math.Round((e.Progress * 100), 0);
             Console.WriteLine(pbarA.Value);
         }
 
