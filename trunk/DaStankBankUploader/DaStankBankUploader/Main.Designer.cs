@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtOutputDir = new System.Windows.Forms.TextBox();
             this.btnChooseOutput = new System.Windows.Forms.Button();
-            this.pbarCurFile = new System.Windows.Forms.ProgressBar();
+            this.pbarCurFileA = new System.Windows.Forms.ProgressBar();
             this.pbarTotal = new System.Windows.Forms.ProgressBar();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
             this.txtBGImage = new System.Windows.Forms.TextBox();
             this.btnChooseBG = new System.Windows.Forms.Button();
             this.lblHorizLine = new System.Windows.Forms.Label();
+            this.pbarCurFileV = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // listFiles
@@ -119,13 +120,13 @@
             this.btnChooseOutput.UseVisualStyleBackColor = true;
             this.btnChooseOutput.Click += new System.EventHandler(this.btnChooseOutput_Click);
             // 
-            // pbarCurFile
+            // pbarCurFileA
             // 
-            this.pbarCurFile.Location = new System.Drawing.Point(103, 245);
-            this.pbarCurFile.Name = "pbarCurFile";
-            this.pbarCurFile.Size = new System.Drawing.Size(437, 30);
-            this.pbarCurFile.TabIndex = 11;
-            this.pbarCurFile.Visible = false;
+            this.pbarCurFileA.Location = new System.Drawing.Point(103, 246);
+            this.pbarCurFileA.Name = "pbarCurFileA";
+            this.pbarCurFileA.Size = new System.Drawing.Size(437, 15);
+            this.pbarCurFileA.TabIndex = 11;
+            this.pbarCurFileA.Visible = false;
             // 
             // pbarTotal
             // 
@@ -243,11 +244,20 @@
             this.lblHorizLine.Text = "________________________________________________________";
             this.lblHorizLine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pbarCurFileV
+            // 
+            this.pbarCurFileV.Location = new System.Drawing.Point(103, 262);
+            this.pbarCurFileV.Name = "pbarCurFileV";
+            this.pbarCurFileV.Size = new System.Drawing.Size(437, 15);
+            this.pbarCurFileV.TabIndex = 19;
+            this.pbarCurFileV.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 340);
+            this.Controls.Add(this.pbarCurFileV);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnChooseBG);
@@ -258,7 +268,7 @@
             this.Controls.Add(this.pbarTotal);
             this.Controls.Add(this.txtBGImage);
             this.Controls.Add(this.txtOutputDir);
-            this.Controls.Add(this.pbarCurFile);
+            this.Controls.Add(this.pbarCurFileA);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnRender);
@@ -289,7 +299,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtOutputDir;
         private System.Windows.Forms.Button btnChooseOutput;
-        private System.Windows.Forms.ProgressBar pbarCurFile;
+        private System.Windows.Forms.ProgressBar pbarCurFileA;
         private System.Windows.Forms.ProgressBar pbarTotal;
         private System.Windows.Forms.Label lblCurrent;
         private System.Windows.Forms.Label lblTotal;
@@ -302,5 +312,6 @@
         private System.Windows.Forms.TextBox txtBGImage;
         private System.Windows.Forms.Button btnChooseBG;
         private System.Windows.Forms.Label lblHorizLine;
+        private System.Windows.Forms.ProgressBar pbarCurFileV;
     }
 }
