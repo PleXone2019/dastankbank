@@ -24,8 +24,8 @@ namespace DaStankBankUploader
         private string backgroundImage = "";
         public IRenderer renderer;
 
-        PercentageProgressParticipant[] audioProgress = new PercentageProgressParticipant[1];
-        PercentageProgressParticipant[] videoProgress = new PercentageProgressParticipant[1];
+        public PercentageProgressParticipant[] audioProgress = new PercentageProgressParticipant[1];
+        public PercentageProgressParticipant[] videoProgress = new PercentageProgressParticipant[1];
 
         /// <summary>
         /// A video to be created from a music file.
@@ -42,7 +42,7 @@ namespace DaStankBankUploader
             videoname = mp3name + ".avi";
             //videoname = Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + ".avi";
             //videopath = Path.Combine(Path.GetDirectoryName(mp3path), videoname);
-            videopath = Path.Combine(Path.GetDirectoryName(outpath), videoname);
+            videopath = Path.Combine(outpath, videoname);
 
             Console.WriteLine("Video From Music");
             Console.WriteLine("mp3path: " + mp3path);
