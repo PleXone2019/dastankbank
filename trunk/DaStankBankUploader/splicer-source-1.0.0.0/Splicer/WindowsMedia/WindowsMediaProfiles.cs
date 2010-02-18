@@ -21,7 +21,7 @@ namespace Splicer.WindowsMedia
     {
         public static string YouTubeVideo
         {
-            get { return ReadStream("youtubevideo.prx"); }
+            get { return ReadStream("YouTubeVideo.prx"); }
         }
 
         public static string HighQualityVideo
