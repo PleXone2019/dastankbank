@@ -6,11 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace DaStankBankUploader
 {
     public partial class Main : Form
     {
+        Thread tRender;
+        listMusicItem currentRenderingItem = null;
+
         public Main()
         {
             InitializeComponent();
@@ -111,23 +115,52 @@ namespace DaStankBankUploader
             pbarTotal.Maximum = listFiles.Items.Count;
             pbarTotal.Value = 0;
 
+            listFiles.Enabled = false;
+            btnAddFile.Enabled = false;
+            btnAddFolder.Enabled = false;
+            btnChooseBG.Enabled = false;
+            btnChooseOutput.Enabled = false;
+            btnModify.Enabled = false;
+            btnRemove.Enabled = false;
+            txtBGImage.Enabled = false;
+            txtOutputDir.Enabled = false;
+
+            tRender = new Thread(doRender);
+            tRender.Start();
+        }
+
+        private void doRender()
+        {
             // do rendering stuff here
             foreach (listMusicItem i in listFiles.Items)
             {
-                pbarCurFileA.Value = 0;
-                pbarCurFileV.Value = 0;
+                currentRenderingItem = i;
+                //pbarCurFileA.Value = 0;
+                //pbarCurFileV.Value = 0;
+                ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
+                pbarCurFileA.Invoke(d, new object[] { 0, pbarCurFileA });
+                pbarCurFileV.Invoke(d, new object[] { 0, pbarCurFileV });
 
                 i.Render(pbarCurFileA, pbarCurFileV, txtBGImage.Text, txtOutputDir.Text);
 
-                pbarTotal.Value = pbarTotal.Value + 1;
+                pbarTotal.Invoke(d, new object[] { pbarTotal.Value + 1, pbarTotal });
+                //pbarTotal.Value = pbarTotal.Value + 1;
             }
+            currentRenderingItem = null;
+
+            UIActions de = new UIActions(RenderStopped);
+            pbarTotal.Invoke(de);
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        void SetProgressBarValue(int i, ProgressBar p)
+        {
+            p.Value = i;
+        }
+
+        private void RenderStopped()
         {
             // hide progress stuff, show button
             btnRender.Visible = true;
-
 
             lblAudio.Visible = false;
             lblVideo.Visible = false;
@@ -137,6 +170,21 @@ namespace DaStankBankUploader
             pbarCurFileV.Visible = false;
             pbarTotal.Visible = false;
             btnCancel.Visible = false;
+
+            listFiles.Enabled = true;
+            btnAddFile.Enabled = true;
+            btnAddFolder.Enabled = true;
+            btnChooseBG.Enabled = true;
+            btnChooseOutput.Enabled = true;
+            btnModify.Enabled = true;
+            btnRemove.Enabled = true;
+            txtBGImage.Enabled = true;
+            txtOutputDir.Enabled = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            RenderStopped();
         }
 
         /// <summary>
@@ -170,9 +218,9 @@ namespace DaStankBankUploader
     }
 
     /// <summary>
-    /// Delegate to set progress bar status
+    /// A set of actions to perform on the UI
     /// </summary>
-    public delegate void ProgressBarSet(int value, ProgressBar pbar);
+    public delegate void UIActions();
 
     /// <summary>
     /// A music item that's in the list.
@@ -180,8 +228,6 @@ namespace DaStankBankUploader
     class listMusicItem : Object
     {
         private string path = "";
-        private ProgressBar pbarA;
-        private ProgressBar pbarV;
         private string bg;
         private string outpath;
 
@@ -199,36 +245,11 @@ namespace DaStankBankUploader
 
         public void Render(ProgressBar pbarAudio, ProgressBar pbarVideo, string bg, string outpath)
         {
-            this.pbarA = pbarAudio;
-            this.pbarV = pbarVideo;
             this.bg = bg;
             this.outpath = outpath;
 
             v = new VideoFromMusic(path, bg, outpath);
-            v.Render();
-            v.audioProgress[0].ProgressChanged += new EventHandler<Splicer.Renderer.ProgressChangedEventArgs>(listMusicItem_ProgressChangedAudio);
-            v.videoProgress[0].ProgressChanged += new EventHandler<Splicer.Renderer.ProgressChangedEventArgs>(listMusicItem_ProgressChangedVideo);
-        }
-
-        void listMusicItem_ProgressChangedVideo(object sender, Splicer.Renderer.ProgressChangedEventArgs e)
-        {
-            Console.Write("V: ");
-            ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
-            pbarV.Invoke(d, new object[] { (int)Math.Round((e.Progress * 100), 0), pbarV });
-            Console.WriteLine(pbarV.Value);
-        }
-
-        void listMusicItem_ProgressChangedAudio(object sender, Splicer.Renderer.ProgressChangedEventArgs e)
-        {
-            Console.Write("A: ");
-            ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
-            pbarA.Invoke(d, new object[] { (int)Math.Round((e.Progress * 100), 0), pbarA });
-            Console.WriteLine(pbarA.Value);
-        }
-
-        void SetProgressBarValue(int i, ProgressBar p)
-        {
-            p.Value = i;
+            v.Render(pbarAudio, pbarVideo);
         }
     }
 }
