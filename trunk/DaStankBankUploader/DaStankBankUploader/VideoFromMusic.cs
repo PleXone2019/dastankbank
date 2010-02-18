@@ -92,13 +92,18 @@ namespace DaStankBankUploader
                 IClip audio = audioTrack.AddAudio(this.mp3path);
                 Console.WriteLine("done.");
 
-                Console.Write("Create video track...");
-                IClip clip1 = videoTrack.AddImage(this.backgroundImage, 0, audio.Duration);
+                Console.Write("Create video track... length: " + audio.Duration.ToString() + "...");
+                IClip clip1 = videoTrack.AddImage(this.backgroundImage); //videoTrack.AddImage(this.backgroundImage, 0, audio.Duration);
+
                 Console.WriteLine("done.");
 
                 // set up progress indicators
                 audioProgress[0] = new PercentageProgressParticipant(timeline);
                 videoProgress[0] = new PercentageProgressParticipant(timeline);
+
+                Console.WriteLine("Timeline duration: " + timeline.Duration);
+                Console.WriteLine("Audio duration: " + audio.Duration);
+                Console.WriteLine("IMG duration: " + videoTrack.Duration);
 
                 // render our video out
                 Console.Write("Render Start...");
