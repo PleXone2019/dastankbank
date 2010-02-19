@@ -362,8 +362,8 @@
             this.tableLayoutPanel3.Controls.Add(this.label12, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnAlbumArt, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.txtBGpath, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.btnAlbumArt, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -391,7 +391,7 @@
             this.btnVideoBG.Name = "btnVideoBG";
             this.btnVideoBG.Size = new System.Drawing.Size(195, 162);
             this.btnVideoBG.TabIndex = 4;
-            this.btnVideoBG.Text = "button3";
+            this.btnVideoBG.Text = "n/a";
             this.btnVideoBG.UseVisualStyleBackColor = true;
             // 
             // label12
@@ -437,7 +437,7 @@
             this.btnAlbumArt.Name = "btnAlbumArt";
             this.btnAlbumArt.Size = new System.Drawing.Size(194, 162);
             this.btnAlbumArt.TabIndex = 3;
-            this.btnAlbumArt.Text = "button2";
+            this.btnAlbumArt.Text = "n/a";
             this.btnAlbumArt.UseVisualStyleBackColor = true;
             // 
             // txtBGpath
@@ -571,6 +571,7 @@
             this.lstItems.Name = "lstItems";
             this.lstItems.Size = new System.Drawing.Size(157, 290);
             this.lstItems.TabIndex = 6;
+            this.lstItems.SelectedValueChanged += new System.EventHandler(this.lstItems_SelectedValueChanged);
             // 
             // textBox5
             // 
