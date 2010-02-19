@@ -136,6 +136,10 @@
     <Content Include="libs\Splicer.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ID3Class\ID3.csproj">
+      <Project>{5D66099A-A8C5-47AB-B230-C9B60DFC1B40}</Project>
+      <Name>ID3</Name>
+    </ProjectReference>
     <ProjectReference Include="..\splicer-source-1.0.0.0\Splicer\Splicer.csproj">
       <Project>{77C46D9D-1BC1-4CAF-87CF-9242721066EF}</Project>
       <Name>Splicer</Name>
