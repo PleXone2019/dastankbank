@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using Id3Lib;
+using System.IO;
 
 namespace DaStankBankUploader
 {
