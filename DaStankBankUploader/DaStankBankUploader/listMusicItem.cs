@@ -63,18 +63,9 @@ namespace DaStankBankUploader
             {
                 AttachedPictureFrame ap = id3.AttachedPictureFrames.Items[i];
 
-                MemoryStream temp = new MemoryStream();
-                ap.Data.WriteTo(temp);
-                temp.Position = 0;
-
-                try
-                {
-                    images[i] = Image.FromStream(temp);
-                }
-                catch
-                {
-                    // don't really care what goes wrong, just catch and move on...
-                }
+                // :o SHOCK! HORROR! no seriously, who cares what goes wrong here...
+                try { images[i] = Image.FromStream(ap.Data); }
+                catch { }
             }
 
             Console.WriteLine("Images Found: " + images.Length.ToString());
