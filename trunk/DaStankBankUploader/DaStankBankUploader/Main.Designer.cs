@@ -132,7 +132,7 @@
             // 
             // pbarTotal
             // 
-            this.pbarTotal.Location = new System.Drawing.Point(103, 283);
+            this.pbarTotal.Location = new System.Drawing.Point(103, 282);
             this.pbarTotal.Name = "pbarTotal";
             this.pbarTotal.Size = new System.Drawing.Size(437, 30);
             this.pbarTotal.TabIndex = 12;
@@ -151,7 +151,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(55, 290);
+            this.lblTotal.Location = new System.Drawing.Point(55, 289);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(42, 18);
             this.lblTotal.TabIndex = 14;
