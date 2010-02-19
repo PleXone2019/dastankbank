@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
-using ID3;
 
 namespace DaStankBankUploader
 {
@@ -40,6 +39,8 @@ namespace DaStankBankUploader
             // to load saved data
             txtOutputDir.Text = Properties.Settings.Default.outputpath;
             txtBGImage.Text = Properties.Settings.Default.bgimage;
+
+            btnModify.Enabled = false;
         }
 
         private void addPathsToList(string[] paths)
@@ -50,7 +51,7 @@ namespace DaStankBankUploader
 
         private void addPathsToList(string path)
         {
-            listMusicItem i = new listMusicItem(path);
+            listMusicItem i = new listMusicItem(path, txtBGImage.Text, txtOutputDir.Text);
             listFiles.Items.Add(i);
         }
 
@@ -67,6 +68,16 @@ namespace DaStankBankUploader
             if (f.ShowDialog() == DialogResult.OK)
             {
                 txtOutputDir.Text = f.SelectedPath;
+
+                UpdateItemPaths();
+            }
+        }
+
+        private void UpdateItemPaths()
+        {
+            foreach (listMusicItem i in listFiles.Items)
+            {
+                i.updatePaths(txtBGImage.Text, txtOutputDir.Text);
             }
         }
 
@@ -84,7 +95,10 @@ namespace DaStankBankUploader
             f.Multiselect = true;
             f.Title = "Choose music files to add...";
             if (f.ShowDialog() == DialogResult.OK)
+            {
                 addPathsToList(f.FileNames);
+                btnModify.Enabled = true;
+            }
         }
 
         /// <summary>
@@ -142,7 +156,7 @@ namespace DaStankBankUploader
                 pbarCurFileA.Invoke(d, new object[] { 0, pbarCurFileA });
                 pbarCurFileV.Invoke(d, new object[] { 0, pbarCurFileV });
 
-                i.Render(pbarCurFileA, pbarCurFileV, txtBGImage.Text, txtOutputDir.Text);
+                i.Render(pbarCurFileA, pbarCurFileV);
 
                 pbarTotal.Invoke(d, new object[] { pbarTotal.Value + 1, pbarTotal });
                 //pbarTotal.Value = pbarTotal.Value + 1;
@@ -197,6 +211,9 @@ namespace DaStankBankUploader
         {
             while ( listFiles.CheckedIndices.Count > 0 )
                 listFiles.Items.RemoveAt(listFiles.CheckedIndices[0]);
+
+            if (listFiles.Items.Count == 0)
+                btnModify.Enabled = false;
         }
         
         /// <summary>
@@ -214,76 +231,24 @@ namespace DaStankBankUploader
             f.Multiselect = false;
             f.Title = "Choose the image file to use...";
             if (f.ShowDialog() == DialogResult.OK)
+            {
                 txtBGImage.Text = f.FileName;
+                UpdateItemPaths();
+            }
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            ModifyItems i = new ModifyItems();
+            ModifyItems i;
+            //if (listFiles.CheckedItems.Count > 0)
+            //{
+                // if items are checked, send only those to the form
+                //i = new ModifyItems(listFiles.CheckedItems);
+            //} else {
+                // send all
+                i = new ModifyItems(listFiles.Items);
+            //}
             i.ShowDialog();
-        }
-    }
-
-    /// <summary>
-    /// A set of actions to perform on the UI
-    /// </summary>
-    public delegate void UIActions();
-
-    /// <summary>
-    /// A music item that's in the list.
-    /// </summary>
-    class listMusicItem : Object
-    {
-        private string path = "";
-        private string bg;
-        private string outpath;
-
-        // mp3 data
-        private string title;
-        private string artist;
-        private string album;
-
-        public VideoFromMusic v;
-
-        public listMusicItem(string path)
-        {
-            this.path = path;
-
-            // get ze id3 dataz!
-            // http://www.codeproject.com/KB/cs/Do_Anything_With_ID3.aspx
-            ID3Info f = new ID3Info(path, true);
-            ID3v2 id3 = f.ID3v2Info;
-
-            this.title = id3.GetTextFrame("TIT2");
-            this.artist = id3.GetTextFrame("TPE1");
-            this.album = id3.GetTextFrame("TALB");
-
-            Console.WriteLine("File ID3 data :: " + Path.GetFileName(path));
-            Console.WriteLine("Title: " + title);
-            Console.WriteLine("Artist: " + artist);
-            Console.WriteLine("Album: " + album);
-            /*
-                txt2Track.Text = Data.ID3v2Info.GetTextFrame("TRCK");
-                txt2Set.Text = Data.ID3v2Info.GetTextFrame("TPOS");
-                txt2Title.Text = Data.ID3v2Info.GetTextFrame("TIT2");
-                txt2Artist.Text = Data.ID3v2Info.GetTextFrame("TPE1");
-                txt2Album.Text = Data.ID3v2Info.GetTextFrame("TALB");
-                cmb2Genre.Genre = Data.ID3v2Info.GetTextFrame("TCON");
-            */
-        }
-
-        public override string ToString()
-        {
-            return path;
-        }
-
-        public void Render(ProgressBar pbarAudio, ProgressBar pbarVideo, string bg, string outpath)
-        {
-            this.bg = bg;
-            this.outpath = outpath;
-
-            v = new VideoFromMusic(path, bg, outpath);
-            v.Render(pbarAudio, pbarVideo);
         }
     }
 }
