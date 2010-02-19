@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
-using Id3Lib;
 using System.IO;
+using ID3;
 
 namespace DaStankBankUploader
 {
@@ -52,7 +52,6 @@ namespace DaStankBankUploader
         {
             listMusicItem i = new listMusicItem(path);
             listFiles.Items.Add(i);
-
         }
 
         /// <summary>
@@ -233,11 +232,38 @@ namespace DaStankBankUploader
         private string bg;
         private string outpath;
 
+        // mp3 data
+        private string title;
+        private string artist;
+        private string album;
+
         public VideoFromMusic v;
 
         public listMusicItem(string path)
         {
             this.path = path;
+
+            // get ze id3 dataz!
+            // http://www.codeproject.com/KB/cs/Do_Anything_With_ID3.aspx
+            ID3Info f = new ID3Info(path, true);
+            ID3v2 id3 = f.ID3v2Info;
+
+            this.title = id3.GetTextFrame("TIT2");
+            this.artist = id3.GetTextFrame("TPE1");
+            this.album = id3.GetTextFrame("TALB");
+
+            Console.WriteLine("File ID3 data :: " + Path.GetFileName(path));
+            Console.WriteLine("Title: " + title);
+            Console.WriteLine("Artist: " + artist);
+            Console.WriteLine("Album: " + album);
+            /*
+                txt2Track.Text = Data.ID3v2Info.GetTextFrame("TRCK");
+                txt2Set.Text = Data.ID3v2Info.GetTextFrame("TPOS");
+                txt2Title.Text = Data.ID3v2Info.GetTextFrame("TIT2");
+                txt2Artist.Text = Data.ID3v2Info.GetTextFrame("TPE1");
+                txt2Album.Text = Data.ID3v2Info.GetTextFrame("TALB");
+                cmb2Genre.Genre = Data.ID3v2Info.GetTextFrame("TCON");
+            */
         }
 
         public override string ToString()
