@@ -34,11 +34,36 @@ namespace DaStankBankUploader
             loggedIn = true;
         }
 
+        // youtube stuff
+
+        // Should get these from http://gdata.youtube.com/schemas/2007/categories.cat
+        public enum YTCatagory
+        {
+            Film,
+            Autos,
+            Music,
+            Animals,
+            Sports,
+            Travel,
+            Shortmov,
+            Videoblog,
+            Games,
+            Comedy,
+            People,
+            News,
+            Entertainment,
+            Education,
+            Howto,
+            Nonprofit,
+            Tech
+        }
+
         private static void ytLogin()
         {
             Console.Write("[yt] Logging in to: " + User.ytUser + " ...");
             settings = new YouTubeRequestSettings("Da Stank Bank", Program.ytDevKey, User.ytUser, User.ytPass);
             request = new YouTubeRequest(settings);
+
             Console.WriteLine("done.");
         }
     }
