@@ -216,6 +216,12 @@ namespace DaStankBankUploader
             if (f.ShowDialog() == DialogResult.OK)
                 txtBGImage.Text = f.FileName;
         }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            ModifyItems i = new ModifyItems();
+            i.ShowDialog();
+        }
     }
 
     /// <summary>
