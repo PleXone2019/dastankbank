@@ -33,10 +33,10 @@
     <SupportUrl>http://www.theootz.com</SupportUrl>
     <ProductName>Da Stank Bank Uploader</ProductName>
     <PublisherName>theootz</PublisherName>
-    <MinimumRequiredVersion>0.0.0.3</MinimumRequiredVersion>
+    <MinimumRequiredVersion>0.0.0.5</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>0.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
