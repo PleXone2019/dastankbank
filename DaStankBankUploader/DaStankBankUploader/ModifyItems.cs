@@ -105,7 +105,7 @@ http://www.facebook.com/pages/Toronto-ON/Da-Stank-Bank/257926353411?ref=ts";
                 txtBGpath.Text = "";
             }
 
-            if (sel.images.Length > 0)
+            if (sel.images.Length > 0 && sel.images[0] != null)
             {
                 // we'll just load the first image...
                 Image img = sel.images[0];

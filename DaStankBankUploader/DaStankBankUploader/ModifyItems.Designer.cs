@@ -56,10 +56,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnAlbumArt = new System.Windows.Forms.Button();
             this.txtBGpath = new System.Windows.Forms.TextBox();
+            this.btnAlbumArt = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnWPPostDef = new System.Windows.Forms.Button();
+            this.txtWPPost = new System.Windows.Forms.TextBox();
+            this.txtWPTags = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtYTDesc = new System.Windows.Forms.TextBox();
@@ -70,9 +73,6 @@
             this.lstItems = new System.Windows.Forms.ListBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnWPPostDef = new System.Windows.Forms.Button();
-            this.txtWPPost = new System.Windows.Forms.TextBox();
-            this.txtWPTags = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -430,6 +430,15 @@
             this.label10.Text = "Click either of the images to change them.";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtBGpath
+            // 
+            this.txtBGpath.BackColor = System.Drawing.SystemColors.Window;
+            this.txtBGpath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBGpath.Location = new System.Drawing.Point(203, 231);
+            this.txtBGpath.Name = "txtBGpath";
+            this.txtBGpath.Size = new System.Drawing.Size(195, 26);
+            this.txtBGpath.TabIndex = 10;
+            // 
             // btnAlbumArt
             // 
             this.btnAlbumArt.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -439,15 +448,6 @@
             this.btnAlbumArt.TabIndex = 3;
             this.btnAlbumArt.Text = "n/a";
             this.btnAlbumArt.UseVisualStyleBackColor = true;
-            // 
-            // txtBGpath
-            // 
-            this.txtBGpath.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBGpath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBGpath.Location = new System.Drawing.Point(203, 231);
-            this.txtBGpath.Name = "txtBGpath";
-            this.txtBGpath.Size = new System.Drawing.Size(195, 26);
-            this.txtBGpath.TabIndex = 10;
             // 
             // tabPage3
             // 
@@ -476,6 +476,37 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(407, 266);
             this.tableLayoutPanel5.TabIndex = 2;
+            // 
+            // btnWPPostDef
+            // 
+            this.btnWPPostDef.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWPPostDef.Location = new System.Drawing.Point(3, 229);
+            this.btnWPPostDef.Name = "btnWPPostDef";
+            this.btnWPPostDef.Size = new System.Drawing.Size(401, 34);
+            this.btnWPPostDef.TabIndex = 4;
+            this.btnWPPostDef.Text = "Set As Default";
+            this.btnWPPostDef.UseVisualStyleBackColor = true;
+            // 
+            // txtWPPost
+            // 
+            this.txtWPPost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtWPPost.Location = new System.Drawing.Point(3, 73);
+            this.txtWPPost.Multiline = true;
+            this.txtWPPost.Name = "txtWPPost";
+            this.txtWPPost.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtWPPost.Size = new System.Drawing.Size(401, 150);
+            this.txtWPPost.TabIndex = 0;
+            // 
+            // txtWPTags
+            // 
+            this.txtWPTags.AutoSize = true;
+            this.txtWPTags.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtWPTags.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWPTags.Location = new System.Drawing.Point(3, 0);
+            this.txtWPTags.Name = "txtWPTags";
+            this.txtWPTags.Size = new System.Drawing.Size(401, 70);
+            this.txtWPTags.TabIndex = 5;
+            this.txtWPTags.Text = "label13";
             // 
             // tabPage4
             // 
@@ -591,37 +622,6 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Set As Default";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnWPPostDef
-            // 
-            this.btnWPPostDef.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnWPPostDef.Location = new System.Drawing.Point(3, 229);
-            this.btnWPPostDef.Name = "btnWPPostDef";
-            this.btnWPPostDef.Size = new System.Drawing.Size(401, 34);
-            this.btnWPPostDef.TabIndex = 4;
-            this.btnWPPostDef.Text = "Set As Default";
-            this.btnWPPostDef.UseVisualStyleBackColor = true;
-            // 
-            // txtWPPost
-            // 
-            this.txtWPPost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtWPPost.Location = new System.Drawing.Point(3, 73);
-            this.txtWPPost.Multiline = true;
-            this.txtWPPost.Name = "txtWPPost";
-            this.txtWPPost.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtWPPost.Size = new System.Drawing.Size(401, 150);
-            this.txtWPPost.TabIndex = 0;
-            // 
-            // txtWPTags
-            // 
-            this.txtWPTags.AutoSize = true;
-            this.txtWPTags.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtWPTags.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWPTags.Location = new System.Drawing.Point(3, 0);
-            this.txtWPTags.Name = "txtWPTags";
-            this.txtWPTags.Size = new System.Drawing.Size(401, 70);
-            this.txtWPTags.TabIndex = 5;
-            this.txtWPTags.Text = "label13";
             // 
             // ModifyItems
             // 

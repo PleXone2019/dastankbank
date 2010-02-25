@@ -93,7 +93,7 @@ namespace DaStankBankUploader
                 Console.WriteLine("done.");
 
                 Console.Write("Create video track... length: " + audio.Duration.ToString() + "...");
-                IClip clip1 = videoTrack.AddImage(this.backgroundImage); //videoTrack.AddImage(this.backgroundImage, 0, audio.Duration);
+                IClip clip1 = videoTrack.AddImage(this.backgroundImage, 0, audio.Duration); //videoTrack.AddImage(this.backgroundImage, 0, audio.Duration);
 
                 Console.WriteLine("done.");
 
