@@ -60,6 +60,7 @@ namespace DaStankBankUploader
 
         private static void ytLogin()
         {
+            //http://trailsinthesand.com/programmatically-uploading-videos-to-youtube/ 
             Console.Write("[yt] Logging in to: " + User.ytUser + " ...");
             settings = new YouTubeRequestSettings("Da Stank Bank", Program.ytDevKey, User.ytUser, User.ytPass);
             request = new YouTubeRequest(settings);
