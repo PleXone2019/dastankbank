@@ -154,7 +154,6 @@
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DaStankBank Login";
             this.ResumeLayout(false);

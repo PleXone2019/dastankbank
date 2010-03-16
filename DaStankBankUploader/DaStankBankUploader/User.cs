@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Google.GData.Client;
+using Google.GData.Extensions;
+using Google.GData.YouTube;
+using Google.GData.Extensions.MediaRss;
 using Google.YouTube;
 
 namespace DaStankBankUploader
@@ -18,7 +22,7 @@ namespace DaStankBankUploader
         static YouTubeRequestSettings settings;
         static YouTubeRequest request;
 
-        public static void login(string ytUser, string ytPass, string wpUser, string wpPass, string wpURL)
+        public static bool login(string ytUser, string ytPass, string wpUser, string wpPass, string wpURL)
         {
             // save/set data
             Properties.Settings.Default.ytUser = User.ytUser = ytUser;
@@ -29,9 +33,8 @@ namespace DaStankBankUploader
             Properties.Settings.Default.firstTime = false;
             Properties.Settings.Default.Save();
 
-            ytLogin();
-
-            loggedIn = true;
+            loggedIn = ytLogin();
+            return loggedIn;
         }
 
         // youtube stuff
@@ -58,14 +61,39 @@ namespace DaStankBankUploader
             Tech
         }
 
-        private static void ytLogin()
+        private static bool ytLogin()
         {
             //http://trailsinthesand.com/programmatically-uploading-videos-to-youtube/ 
-            Console.Write("[yt] Logging in to: " + User.ytUser + " ...");
+            Console.WriteLine("[yt] Logging in to: " + User.ytUser + " ...");
             settings = new YouTubeRequestSettings("Da Stank Bank", Program.ytDevKey, User.ytUser, User.ytPass);
             request = new YouTubeRequest(settings);
 
+            string url = "http://gdata.youtube.com/feeds/api/users/" + User.ytUser + "/uploads";
+
+            try
+            {
+                Feed<Video> videoFeed = request.Get<Video>(new Uri(url));
+                foreach (Video entry in videoFeed.Entries)
+                {
+                    Console.WriteLine("Entry: " + entry.Id + " -> " + entry.Title);
+                    if (entry.ReadOnly == false)
+                    {
+                        Console.WriteLine("\tVideo is editable by the current user.");
+                    }
+                }
+            }
+            catch (ClientFeedException e)
+            {
+                Console.WriteLine("E: " + e);
+            }
+            catch (GDataRequestException e)
+            {
+                // if this happens we're likely NOT logged in!
+                return false;
+            }
+
             Console.WriteLine("done.");
+            return true;
         }
     }
 }
