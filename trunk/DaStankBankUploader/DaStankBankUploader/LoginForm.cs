@@ -34,10 +34,15 @@ namespace DaStankBankUploader
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // create a new user object and log in
-            User.login(txtYTuser.Text, txtYTpass.Text, txtWPuser.Text, txtWPpass.Text, txtWPUrl.Text);
-
-            this.Close();
-            this.Dispose();
+            if (User.login(txtYTuser.Text, txtYTpass.Text, txtWPuser.Text, txtWPpass.Text, txtWPUrl.Text))
+            {
+                this.Close();
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Unable to log in! Please check your usernames/passwords and try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnEnd_Click(object sender, EventArgs e)
