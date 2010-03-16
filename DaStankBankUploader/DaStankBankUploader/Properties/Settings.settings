@@ -26,5 +26,20 @@
     <Setting Name="wpURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://www.theootz.com/dastankbank/</Value>
     </Setting>
+    <Setting Name="ytDesc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Da Stank Bank
+Music Blog For Drum &amp; Bass, Dubstep, Electro
+
+Youtube:
+http://www.youtube.com/user/Dastankbank
+Blog:
+http://www.theootz.com/dastankbank/
+Facebook:
+http://www.facebook.com/pages/Toronto-ON/Da-Stank-Bank/257926353411?ref=ts</Value>
+    </Setting>
+    <Setting Name="wpPost" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%albumart%
+&lt;object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="480" height="295" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"&gt;&lt;param name="allowFullScreen" value="true" /&gt;&lt;param name="allowscriptaccess" value="always" /&gt;&lt;param name="src" value="http://www.youtube.com/v/%YTID%&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x3873bd&amp;color2=0x3873bd" /&gt;&lt;param name="allowfullscreen" value="true" /&gt;&lt;embed type="application/x-shockwave-flash" width="480" height="295" src="http://www.youtube.com/v/%YTID%&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x3873bd&amp;color2=0x3873bd" allowscriptaccess="always" allowfullscreen="true"&gt;&lt;/embed&gt;&lt;/object&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

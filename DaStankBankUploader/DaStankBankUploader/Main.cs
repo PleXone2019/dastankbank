@@ -54,6 +54,7 @@ namespace DaStankBankUploader
         {
             pbarCurFileA.Size = new Size(399, 15);
             pbarCurFileA.Location = new Point(141, 246);
+            pbarCurFileA.Style = ProgressBarStyle.Blocks;
         }
 
         private void addPathsToList(string[] paths)
@@ -232,6 +233,7 @@ namespace DaStankBankUploader
                 // resize the upload bars
                 pbarCurFileA.Size = new Size(437, 30);
                 pbarCurFileA.Location = new Point(103, 246);
+                pbarCurFileA.Style = ProgressBarStyle.Marquee;
 
                 pbarCurFileV.Enabled = false;
                 pbarCurFileV.Visible = false;
@@ -250,20 +252,25 @@ namespace DaStankBankUploader
             }
         }
 
+        void SetMarqueeSpeed(int i, ProgressBar p)
+        {
+            p.MarqueeAnimationSpeed = i;
+        }
+
         private void doUpload()
         {
-            ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
+            ProgressBarSet d = new ProgressBarSet(SetMarqueeSpeed);
             UIActionsParam da = new UIActionsParam(SetUploadName);
 
-            // do rendering stuff here
+            pbarCurFileA.Invoke(d, new object[] { 0, pbarCurFileA });
+
             foreach (listMusicItem i in listFiles.Items)
             {
                 currentRenderingItem = i;
 
                 if (File.Exists(i.v.VideoPath))
                 {
-                    pbarCurFileA.Invoke(d, new object[] { 0, pbarCurFileA });
-                    pbarCurFileV.Invoke(d, new object[] { 0, pbarCurFileV });
+                    pbarCurFileA.Invoke(d, new object[] { 100, pbarCurFileA });
 
                     statusStrip.Invoke(da, new object[] { i.v.VideoName });
 

@@ -47,7 +47,12 @@ namespace DaStankBankUploader
         public bool customAlbumArt = false;
         public string albumArt = "";
 
+        // our video file
         public VideoFromMusic v;
+
+        // post data
+        public string YTDesc = "";
+        public string WPPost = "";
 
         public listMusicItem(string path, string bg, string outpath)
         {
@@ -79,6 +84,8 @@ namespace DaStankBankUploader
             }
 
             Console.WriteLine("Images Found: " + images.Length.ToString());
+
+            doDefaultTexts();
         }
 
         public void updatePaths(string bg, string outpath)
@@ -106,7 +113,7 @@ namespace DaStankBankUploader
             newVideo.Title = artist + " - " + title;
             newVideo.Tags.Add(new MediaCategory("Music", YouTubeNameTable.CategorySchema));
             newVideo.Keywords = "test, music, video";
-            newVideo.Description = "Test Video";
+            newVideo.Description = YTDesc;
             newVideo.YouTubeEntry.Private = true;
             newVideo.Tags.Add(new MediaCategory("DEVTEST", YouTubeNameTable.DeveloperTagSchema));
 
@@ -116,7 +123,8 @@ namespace DaStankBankUploader
 
             newVideo.YouTubeEntry.MediaSource = new MediaFileSource(
                 v.VideoPath,
-                "video/x-ms-wmv");
+                "video/x-msvideo"
+                /*"video/x-ms-wmv"*/);
 
             Console.Write("Uploading...");
             Video createdVideo = User.YTRequest.Upload(User.YTUser, newVideo);

@@ -60,19 +60,23 @@
             this.btnAlbumArt = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnWPPostDef = new System.Windows.Forms.Button();
+            this.btnWPPostSetDef = new System.Windows.Forms.Button();
             this.txtWPPost = new System.Windows.Forms.TextBox();
             this.txtWPTags = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtYTDesc = new System.Windows.Forms.TextBox();
-            this.btnYTPostDef = new System.Windows.Forms.Button();
+            this.btnYTDescSetAll = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lstItems = new System.Windows.Forms.ListBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnWPPostSetAll = new System.Windows.Forms.Button();
+            this.btnYTDescSetDef = new System.Windows.Forms.Button();
+            this.btnWPPostReset = new System.Windows.Forms.Button();
+            this.btnYTDescReset = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -461,9 +465,13 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.btnWPPostDef, 0, 2);
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.Controls.Add(this.btnWPPostReset, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.btnWPPostSetAll, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.btnWPPostSetDef, 2, 2);
             this.tableLayoutPanel5.Controls.Add(this.txtWPPost, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.txtWPTags, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -477,18 +485,20 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(407, 266);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
-            // btnWPPostDef
+            // btnWPPostSetDef
             // 
-            this.btnWPPostDef.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnWPPostDef.Location = new System.Drawing.Point(3, 229);
-            this.btnWPPostDef.Name = "btnWPPostDef";
-            this.btnWPPostDef.Size = new System.Drawing.Size(401, 34);
-            this.btnWPPostDef.TabIndex = 4;
-            this.btnWPPostDef.Text = "Set To All";
-            this.btnWPPostDef.UseVisualStyleBackColor = true;
+            this.btnWPPostSetDef.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWPPostSetDef.Location = new System.Drawing.Point(273, 229);
+            this.btnWPPostSetDef.Name = "btnWPPostSetDef";
+            this.btnWPPostSetDef.Size = new System.Drawing.Size(131, 34);
+            this.btnWPPostSetDef.TabIndex = 4;
+            this.btnWPPostSetDef.Text = "Set As Default";
+            this.btnWPPostSetDef.UseVisualStyleBackColor = true;
+            this.btnWPPostSetDef.Click += new System.EventHandler(this.btnWPPostDef_Click);
             // 
             // txtWPPost
             // 
+            this.tableLayoutPanel5.SetColumnSpan(this.txtWPPost, 3);
             this.txtWPPost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtWPPost.Location = new System.Drawing.Point(3, 73);
             this.txtWPPost.Multiline = true;
@@ -500,6 +510,7 @@
             // txtWPTags
             // 
             this.txtWPTags.AutoSize = true;
+            this.tableLayoutPanel5.SetColumnSpan(this.txtWPTags, 3);
             this.txtWPTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtWPTags.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWPTags.Location = new System.Drawing.Point(3, 0);
@@ -520,10 +531,14 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel4.Controls.Add(this.btnYTDescReset, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnYTDescSetDef, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.txtYTDesc, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btnYTPostDef, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnYTDescSetAll, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -531,12 +546,12 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(407, 266);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // txtYTDesc
             // 
+            this.tableLayoutPanel4.SetColumnSpan(this.txtYTDesc, 3);
             this.txtYTDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtYTDesc.Location = new System.Drawing.Point(3, 3);
             this.txtYTDesc.Multiline = true;
@@ -545,15 +560,15 @@
             this.txtYTDesc.Size = new System.Drawing.Size(401, 220);
             this.txtYTDesc.TabIndex = 0;
             // 
-            // btnYTPostDef
+            // btnYTDescSetAll
             // 
-            this.btnYTPostDef.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnYTPostDef.Location = new System.Drawing.Point(3, 229);
-            this.btnYTPostDef.Name = "btnYTPostDef";
-            this.btnYTPostDef.Size = new System.Drawing.Size(401, 34);
-            this.btnYTPostDef.TabIndex = 3;
-            this.btnYTPostDef.Text = "Set To All";
-            this.btnYTPostDef.UseVisualStyleBackColor = true;
+            this.btnYTDescSetAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnYTDescSetAll.Location = new System.Drawing.Point(138, 229);
+            this.btnYTDescSetAll.Name = "btnYTDescSetAll";
+            this.btnYTDescSetAll.Size = new System.Drawing.Size(129, 34);
+            this.btnYTDescSetAll.TabIndex = 3;
+            this.btnYTDescSetAll.Text = "Set To All";
+            this.btnYTDescSetAll.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -624,6 +639,49 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Set As Default";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnWPPostSetAll
+            // 
+            this.btnWPPostSetAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWPPostSetAll.Location = new System.Drawing.Point(138, 229);
+            this.btnWPPostSetAll.Name = "btnWPPostSetAll";
+            this.btnWPPostSetAll.Size = new System.Drawing.Size(129, 34);
+            this.btnWPPostSetAll.TabIndex = 6;
+            this.btnWPPostSetAll.Text = "Set To All";
+            this.btnWPPostSetAll.UseVisualStyleBackColor = true;
+            // 
+            // btnYTDescSetDef
+            // 
+            this.btnYTDescSetDef.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnYTDescSetDef.Location = new System.Drawing.Point(273, 229);
+            this.btnYTDescSetDef.Name = "btnYTDescSetDef";
+            this.btnYTDescSetDef.Size = new System.Drawing.Size(131, 34);
+            this.btnYTDescSetDef.TabIndex = 4;
+            this.btnYTDescSetDef.Text = "Set As Default";
+            this.btnYTDescSetDef.UseVisualStyleBackColor = true;
+            this.btnYTDescSetDef.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnWPPostReset
+            // 
+            this.btnWPPostReset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWPPostReset.Location = new System.Drawing.Point(3, 229);
+            this.btnWPPostReset.Name = "btnWPPostReset";
+            this.btnWPPostReset.Size = new System.Drawing.Size(129, 34);
+            this.btnWPPostReset.TabIndex = 7;
+            this.btnWPPostReset.Text = "Reset To Default";
+            this.btnWPPostReset.UseVisualStyleBackColor = true;
+            this.btnWPPostReset.Click += new System.EventHandler(this.btnWPPostReset_Click);
+            // 
+            // btnYTDescReset
+            // 
+            this.btnYTDescReset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnYTDescReset.Location = new System.Drawing.Point(3, 229);
+            this.btnYTDescReset.Name = "btnYTDescReset";
+            this.btnYTDescReset.Size = new System.Drawing.Size(129, 34);
+            this.btnYTDescReset.TabIndex = 6;
+            this.btnYTDescReset.Text = "Reset To Default";
+            this.btnYTDescReset.UseVisualStyleBackColor = true;
+            this.btnYTDescReset.Click += new System.EventHandler(this.btnYTDescReset_Click);
             // 
             // ModifyItems
             // 
@@ -699,11 +757,15 @@
         private System.Windows.Forms.TextBox txtYTDesc;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Button btnYTPostDef;
+        private System.Windows.Forms.Button btnYTDescSetAll;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnWPPostDef;
+        private System.Windows.Forms.Button btnWPPostSetDef;
         private System.Windows.Forms.TextBox txtWPPost;
         private System.Windows.Forms.Label txtWPTags;
+        private System.Windows.Forms.Button btnWPPostSetAll;
+        private System.Windows.Forms.Button btnYTDescSetDef;
+        private System.Windows.Forms.Button btnWPPostReset;
+        private System.Windows.Forms.Button btnYTDescReset;
     }
 }
