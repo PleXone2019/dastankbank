@@ -93,6 +93,9 @@ namespace DaStankBankUploader
                 cmbYTCat.SelectedItem = null;
             }
 
+            sel.ytTags = txtYTTags.Text;
+            sel.wpTags = txtWPTags.Text;
+
             // load data -- panel 2
             System.Drawing.Image.GetThumbnailImageAbort d = new Image.GetThumbnailImageAbort(ImageAborted);
             if (sel.bg != "")
@@ -173,6 +176,9 @@ namespace DaStankBankUploader
             {
                 i.ytCat = cmbYTCat.SelectedItem.ToString();
             }
+
+            txtYTTags.Text = sel.ytTags;
+            txtWPTags.Text = sel.wpTags;
 
             // panel 2
 
