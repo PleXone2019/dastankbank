@@ -33,13 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
             this.cmbYTCat = new System.Windows.Forms.ComboBox();
-            this.btnAddTag = new System.Windows.Forms.Button();
-            this.txtNewTag = new System.Windows.Forms.TextBox();
-            this.listTags = new System.Windows.Forms.CheckedListBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbWPCat = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,11 +54,15 @@
             this.btnAlbumArt = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnWPPostReset = new System.Windows.Forms.Button();
+            this.btnWPPostSetAll = new System.Windows.Forms.Button();
             this.btnWPPostSetDef = new System.Windows.Forms.Button();
             this.txtWPPost = new System.Windows.Forms.TextBox();
             this.txtWPTags = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnYTDescReset = new System.Windows.Forms.Button();
+            this.btnYTDescSetDef = new System.Windows.Forms.Button();
             this.txtYTDesc = new System.Windows.Forms.TextBox();
             this.btnYTDescSetAll = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -73,10 +71,11 @@
             this.lstItems = new System.Windows.Forms.ListBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnWPPostSetAll = new System.Windows.Forms.Button();
-            this.btnYTDescSetDef = new System.Windows.Forms.Button();
-            this.btnWPPostReset = new System.Windows.Forms.Button();
-            this.btnYTDescReset = new System.Windows.Forms.Button();
+            this.lblWpTags = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtYTTags = new System.Windows.Forms.TextBox();
+            this.lblYTTags = new System.Windows.Forms.Label();
+            this.txtTagInfo = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -152,13 +151,12 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.txtTagInfo);
+            this.tabPage1.Controls.Add(this.txtYTTags);
+            this.tabPage1.Controls.Add(this.lblYTTags);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.lblWpTags);
             this.tabPage1.Controls.Add(this.cmbYTCat);
-            this.tabPage1.Controls.Add(this.btnAddTag);
-            this.tabPage1.Controls.Add(this.txtNewTag);
-            this.tabPage1.Controls.Add(this.listTags);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.cmbWPCat);
             this.tabPage1.Controls.Add(this.label5);
@@ -175,17 +173,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 187);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 56);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Only tags with a\ncheck will be used.\n\nTags are from WP.";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // cmbYTCat
             // 
@@ -209,63 +196,16 @@
             "Tech",
             "Travel",
             "Videoblog"});
-            this.cmbYTCat.Location = new System.Drawing.Point(113, 134);
+            this.cmbYTCat.Location = new System.Drawing.Point(113, 166);
             this.cmbYTCat.Name = "cmbYTCat";
             this.cmbYTCat.Size = new System.Drawing.Size(282, 26);
             this.cmbYTCat.Sorted = true;
             this.cmbYTCat.TabIndex = 17;
             // 
-            // btnAddTag
-            // 
-            this.btnAddTag.Location = new System.Drawing.Point(239, 219);
-            this.btnAddTag.Name = "btnAddTag";
-            this.btnAddTag.Size = new System.Drawing.Size(156, 33);
-            this.btnAddTag.TabIndex = 15;
-            this.btnAddTag.Text = "Add To List";
-            this.btnAddTag.UseVisualStyleBackColor = true;
-            // 
-            // txtNewTag
-            // 
-            this.txtNewTag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNewTag.Location = new System.Drawing.Point(239, 187);
-            this.txtNewTag.Name = "txtNewTag";
-            this.txtNewTag.Size = new System.Drawing.Size(156, 26);
-            this.txtNewTag.TabIndex = 14;
-            // 
-            // listTags
-            // 
-            this.listTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listTags.CheckOnClick = true;
-            this.listTags.FormattingEnabled = true;
-            this.listTags.Location = new System.Drawing.Point(113, 166);
-            this.listTags.Name = "listTags";
-            this.listTags.ScrollAlwaysVisible = true;
-            this.listTags.Size = new System.Drawing.Size(120, 86);
-            this.listTags.Sorted = true;
-            this.listTags.TabIndex = 13;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(239, 166);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 18);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Add New:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(69, 166);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 18);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Tags:";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 137);
+            this.label6.Location = new System.Drawing.Point(13, 169);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 18);
             this.label6.TabIndex = 9;
@@ -485,6 +425,27 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(407, 266);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
+            // btnWPPostReset
+            // 
+            this.btnWPPostReset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWPPostReset.Location = new System.Drawing.Point(3, 229);
+            this.btnWPPostReset.Name = "btnWPPostReset";
+            this.btnWPPostReset.Size = new System.Drawing.Size(129, 34);
+            this.btnWPPostReset.TabIndex = 7;
+            this.btnWPPostReset.Text = "Reset To Default";
+            this.btnWPPostReset.UseVisualStyleBackColor = true;
+            this.btnWPPostReset.Click += new System.EventHandler(this.btnWPPostReset_Click);
+            // 
+            // btnWPPostSetAll
+            // 
+            this.btnWPPostSetAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWPPostSetAll.Location = new System.Drawing.Point(138, 229);
+            this.btnWPPostSetAll.Name = "btnWPPostSetAll";
+            this.btnWPPostSetAll.Size = new System.Drawing.Size(129, 34);
+            this.btnWPPostSetAll.TabIndex = 6;
+            this.btnWPPostSetAll.Text = "Set To All";
+            this.btnWPPostSetAll.UseVisualStyleBackColor = true;
+            // 
             // btnWPPostSetDef
             // 
             this.btnWPPostSetDef.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -548,6 +509,28 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(407, 266);
             this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // btnYTDescReset
+            // 
+            this.btnYTDescReset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnYTDescReset.Location = new System.Drawing.Point(3, 229);
+            this.btnYTDescReset.Name = "btnYTDescReset";
+            this.btnYTDescReset.Size = new System.Drawing.Size(129, 34);
+            this.btnYTDescReset.TabIndex = 6;
+            this.btnYTDescReset.Text = "Reset To Default";
+            this.btnYTDescReset.UseVisualStyleBackColor = true;
+            this.btnYTDescReset.Click += new System.EventHandler(this.btnYTDescReset_Click);
+            // 
+            // btnYTDescSetDef
+            // 
+            this.btnYTDescSetDef.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnYTDescSetDef.Location = new System.Drawing.Point(273, 229);
+            this.btnYTDescSetDef.Name = "btnYTDescSetDef";
+            this.btnYTDescSetDef.Size = new System.Drawing.Size(131, 34);
+            this.btnYTDescSetDef.TabIndex = 4;
+            this.btnYTDescSetDef.Text = "Set As Default";
+            this.btnYTDescSetDef.UseVisualStyleBackColor = true;
+            this.btnYTDescSetDef.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtYTDesc
             // 
@@ -640,48 +623,54 @@
             this.button3.Text = "Set As Default";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnWPPostSetAll
+            // lblWpTags
             // 
-            this.btnWPPostSetAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnWPPostSetAll.Location = new System.Drawing.Point(138, 229);
-            this.btnWPPostSetAll.Name = "btnWPPostSetAll";
-            this.btnWPPostSetAll.Size = new System.Drawing.Size(129, 34);
-            this.btnWPPostSetAll.TabIndex = 6;
-            this.btnWPPostSetAll.Text = "Set To All";
-            this.btnWPPostSetAll.UseVisualStyleBackColor = true;
+            this.lblWpTags.AutoSize = true;
+            this.lblWpTags.Location = new System.Drawing.Point(35, 136);
+            this.lblWpTags.Name = "lblWpTags";
+            this.lblWpTags.Size = new System.Drawing.Size(72, 18);
+            this.lblWpTags.TabIndex = 18;
+            this.lblWpTags.Text = "(WP) Tags:";
             // 
-            // btnYTDescSetDef
+            // textBox1
             // 
-            this.btnYTDescSetDef.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnYTDescSetDef.Location = new System.Drawing.Point(273, 229);
-            this.btnYTDescSetDef.Name = "btnYTDescSetDef";
-            this.btnYTDescSetDef.Size = new System.Drawing.Size(131, 34);
-            this.btnYTDescSetDef.TabIndex = 4;
-            this.btnYTDescSetDef.Text = "Set As Default";
-            this.btnYTDescSetDef.UseVisualStyleBackColor = true;
-            this.btnYTDescSetDef.Click += new System.EventHandler(this.button2_Click);
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(113, 134);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(282, 26);
+            this.textBox1.TabIndex = 20;
             // 
-            // btnWPPostReset
+            // txtYTTags
             // 
-            this.btnWPPostReset.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnWPPostReset.Location = new System.Drawing.Point(3, 229);
-            this.btnWPPostReset.Name = "btnWPPostReset";
-            this.btnWPPostReset.Size = new System.Drawing.Size(129, 34);
-            this.btnWPPostReset.TabIndex = 7;
-            this.btnWPPostReset.Text = "Reset To Default";
-            this.btnWPPostReset.UseVisualStyleBackColor = true;
-            this.btnWPPostReset.Click += new System.EventHandler(this.btnWPPostReset_Click);
+            this.txtYTTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtYTTags.Location = new System.Drawing.Point(113, 198);
+            this.txtYTTags.Name = "txtYTTags";
+            this.txtYTTags.Size = new System.Drawing.Size(282, 26);
+            this.txtYTTags.TabIndex = 22;
             // 
-            // btnYTDescReset
+            // lblYTTags
             // 
-            this.btnYTDescReset.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnYTDescReset.Location = new System.Drawing.Point(3, 229);
-            this.btnYTDescReset.Name = "btnYTDescReset";
-            this.btnYTDescReset.Size = new System.Drawing.Size(129, 34);
-            this.btnYTDescReset.TabIndex = 6;
-            this.btnYTDescReset.Text = "Reset To Default";
-            this.btnYTDescReset.UseVisualStyleBackColor = true;
-            this.btnYTDescReset.Click += new System.EventHandler(this.btnYTDescReset_Click);
+            this.lblYTTags.AutoSize = true;
+            this.lblYTTags.Location = new System.Drawing.Point(42, 200);
+            this.lblYTTags.Name = "lblYTTags";
+            this.lblYTTags.Size = new System.Drawing.Size(65, 18);
+            this.lblYTTags.TabIndex = 21;
+            this.lblYTTags.Text = "(YT) Tags:";
+            // 
+            // txtTagInfo
+            // 
+            this.txtTagInfo.BackColor = System.Drawing.SystemColors.Window;
+            this.txtTagInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTagInfo.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTagInfo.Location = new System.Drawing.Point(6, 230);
+            this.txtTagInfo.Multiline = true;
+            this.txtTagInfo.Name = "txtTagInfo";
+            this.txtTagInfo.ReadOnly = true;
+            this.txtTagInfo.ShortcutsEnabled = false;
+            this.txtTagInfo.Size = new System.Drawing.Size(389, 30);
+            this.txtTagInfo.TabIndex = 23;
+            this.txtTagInfo.Text = "Note: Tags (for both YT and WP) should be comma seperated values. Example: tag1, " +
+                "tag2, tag3, tag4, etc...";
             // 
             // ModifyItems
             // 
@@ -738,14 +727,8 @@
         private System.Windows.Forms.ComboBox cmbWPCat;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnAddTag;
-        private System.Windows.Forms.TextBox txtNewTag;
-        private System.Windows.Forms.CheckedListBox listTags;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbYTCat;
         private System.Windows.Forms.ListBox lstItems;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -767,5 +750,10 @@
         private System.Windows.Forms.Button btnYTDescSetDef;
         private System.Windows.Forms.Button btnWPPostReset;
         private System.Windows.Forms.Button btnYTDescReset;
+        private System.Windows.Forms.TextBox txtYTTags;
+        private System.Windows.Forms.Label lblYTTags;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblWpTags;
+        private System.Windows.Forms.TextBox txtTagInfo;
     }
 }

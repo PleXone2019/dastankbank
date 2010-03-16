@@ -57,6 +57,11 @@ namespace DaStankBankUploader
 
         //youtube specific data
         public string ytCat = "";
+        public string ytTags = "";
+
+        // wp specific data
+        public string wpCat = "";
+        public string wpTags = "";
 
         public listMusicItem(string path, string bg, string outpath)
         {
@@ -114,7 +119,7 @@ namespace DaStankBankUploader
 
             newVideo.Title = artist + " - " + title;
             newVideo.Tags.Add(new MediaCategory("Music", YouTubeNameTable.CategorySchema));
-            newVideo.Keywords = "test, music, video";
+            newVideo.Keywords = "DaStankBankUploader, " + ytTags;
 
             if (YTDesc == "")
             {
