@@ -177,8 +177,8 @@ namespace DaStankBankUploader
                 i.ytCat = cmbYTCat.SelectedItem.ToString();
             }
 
-            txtYTTags.Text = sel.ytTags;
-            txtWPTags.Text = sel.wpTags;
+            txtYTTags.Text = i.ytTags;
+            txtWPTags.Text = i.wpTags;
 
             // panel 2
 
