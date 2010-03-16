@@ -14,6 +14,7 @@ namespace DaStankBankUploader
     public partial class Main : Form
     {
         Thread tRender;
+        Thread tUpload;
         listMusicItem currentRenderingItem = null;
 
         public Main()
@@ -41,6 +42,18 @@ namespace DaStankBankUploader
             txtBGImage.Text = Properties.Settings.Default.bgimage;
 
             btnModify.Enabled = false;
+            lblStatusDefault();
+        }
+
+        private void lblStatusDefault()
+        {
+            lblStatus.Text = "Make sure you've finished editing each file before uploading!";
+        }
+
+        private void pbarDefault()
+        {
+            pbarCurFileA.Size = new Size(399, 15);
+            pbarCurFileA.Location = new Point(141, 246);
         }
 
         private void addPathsToList(string[] paths)
@@ -139,6 +152,9 @@ namespace DaStankBankUploader
             btnRemove.Enabled = false;
             txtBGImage.Enabled = false;
             txtOutputDir.Enabled = false;
+            pbarDefault();
+
+            lblStatus.Text = "Starting rendering process...";
 
             tRender = new Thread(doRender);
             tRender.Start();
@@ -146,15 +162,18 @@ namespace DaStankBankUploader
 
         private void doRender()
         {
+            ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
+            UIActionsParam da = new UIActionsParam(SetRenderName);
+
             // do rendering stuff here
             foreach (listMusicItem i in listFiles.Items)
             {
                 currentRenderingItem = i;
-                //pbarCurFileA.Value = 0;
-                //pbarCurFileV.Value = 0;
-                ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
+
                 pbarCurFileA.Invoke(d, new object[] { 0, pbarCurFileA });
                 pbarCurFileV.Invoke(d, new object[] { 0, pbarCurFileV });
+
+                statusStrip.Invoke(da, new object[] { i.ToString() });
 
                 i.Render(pbarCurFileA, pbarCurFileV);
 
@@ -165,6 +184,11 @@ namespace DaStankBankUploader
 
             UIActions de = new UIActions(RenderStopped);
             pbarTotal.Invoke(de);
+        }
+
+        private void SetRenderName(object text)
+        {
+            lblStatus.Text = "Rendering: " + (string) text;
         }
 
         void SetProgressBarValue(int i, ProgressBar p)
@@ -195,6 +219,68 @@ namespace DaStankBankUploader
             btnRemove.Enabled = true;
             txtBGImage.Enabled = true;
             txtOutputDir.Enabled = true;
+
+            lblStatus.Text = "Rendering complete!";
+
+            // show the upload status bars and such
+            if (MessageBox.Show(
+                "Would you like to upload to youtube?",
+                "Rendering Complete!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                // resize the upload bars
+                pbarCurFileA.Size = new Size(437, 30);
+                pbarCurFileA.Location = new Point(103, 246);
+
+                pbarCurFileV.Enabled = false;
+                pbarCurFileV.Visible = false;
+
+                lblAudio.Visible = false;
+                lblVideo.Visible = false;
+
+                pbarTotal.Value = 0;
+
+                tUpload = new Thread(doUpload);
+                tUpload.Start();
+            }
+        }
+
+        private void doUpload()
+        {
+            ProgressBarSet d = new ProgressBarSet(SetProgressBarValue);
+            UIActionsParam da = new UIActionsParam(SetUploadName);
+
+            // do rendering stuff here
+            foreach (listMusicItem i in listFiles.Items)
+            {
+                currentRenderingItem = i;
+
+                if (File.Exists(i.v.VideoPath))
+                {
+                    pbarCurFileA.Invoke(d, new object[] { 0, pbarCurFileA });
+                    pbarCurFileV.Invoke(d, new object[] { 0, pbarCurFileV });
+
+                    statusStrip.Invoke(da, new object[] { i.v.VideoName });
+
+                    i.Upload(pbarCurFileA);
+                }
+                pbarTotal.Invoke(d, new object[] { pbarTotal.Value + 1, pbarTotal });
+            }
+            currentRenderingItem = null;
+
+            UIActions de = new UIActions(UploadStopped);
+            pbarTotal.Invoke(de);
+        }
+
+        private void SetUploadName(object text)
+        {
+            lblStatus.Text = "Uploading: " + (string)text;
+        }
+
+        private void UploadStopped()
+        {
+            lblStatus.Text = "Uploads Complete!";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

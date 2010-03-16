@@ -86,7 +86,7 @@ namespace DaStankBankUploader
             {
                 Console.WriteLine("E: " + e);
             }
-            catch (GDataRequestException e)
+            catch (GDataRequestException)
             {
                 // if this happens we're likely NOT logged in!
                 return false;
