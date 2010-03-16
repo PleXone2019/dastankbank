@@ -196,9 +196,8 @@ namespace DaStankBankUploader
             p.Value = i;
         }
 
-        private void RenderStopped()
+        private void ShowDefaultStuff()
         {
-            // hide progress stuff, show button
             btnRender.Visible = true;
 
             lblAudio.Visible = false;
@@ -219,9 +218,10 @@ namespace DaStankBankUploader
             btnRemove.Enabled = true;
             txtBGImage.Enabled = true;
             txtOutputDir.Enabled = true;
+        }
 
-            lblStatus.Text = "Rendering complete!";
-
+        private void RenderStopped()
+        {
             // show the upload status bars and such
             if (MessageBox.Show(
                 "Would you like to upload to youtube?",
@@ -243,6 +243,10 @@ namespace DaStankBankUploader
 
                 tUpload = new Thread(doUpload);
                 tUpload.Start();
+            }
+            else
+            {
+                ShowDefaultStuff();
             }
         }
 
@@ -280,6 +284,8 @@ namespace DaStankBankUploader
 
         private void UploadStopped()
         {
+            MessageBox.Show("Uploads Complete!");
+            ShowDefaultStuff();
             lblStatus.Text = "Uploads Complete!";
         }
 

@@ -51,6 +51,9 @@ namespace DaStankBankUploader
             // poll YT for categories
 
             // poll WP for tags
+
+            // select first item
+            lstItems.SelectedIndex = 0;
         }
 
         private void doDefaultTexts()
@@ -142,13 +145,19 @@ http://www.facebook.com/pages/Toronto-ON/Da-Stank-Bank/257926353411?ref=ts";
         private void btnSave_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Saving...");
-            foreach (listMusicItem e in lstItems.Items)
-            {
-                e.artist = txtArtist.Text;
-                e.album = txtAlbum.Text;
-                e.title = txtTitle.Text;
-            }
+
+            listMusicItem i = (listMusicItem)lstItems.SelectedItem;
+            i.artist = txtArtist.Text;
+            i.album = txtAlbum.Text;
+            i.title = txtTitle.Text;
+
             Console.WriteLine("Done!");
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Close();
         }
     }
 }

@@ -8,6 +8,12 @@ using ID3.ID3v2Frames.BinaryFrames;
 using System.IO;
 using System.Drawing;
 
+using Google.GData.Client;
+using Google.GData.Extensions;
+using Google.GData.YouTube;
+using Google.GData.Extensions.MediaRss;
+using Google.YouTube;
+
 namespace DaStankBankUploader
 {
     /// <summary>
@@ -94,7 +100,37 @@ namespace DaStankBankUploader
 
         public void Upload(ProgressBar pbarStatus)
         {
-            Console.WriteLine("WERD");
+            // create video entry
+            Video newVideo = new Video();
+
+            newVideo.Title = artist + " - " + title;
+            newVideo.Tags.Add(new MediaCategory("Music", YouTubeNameTable.CategorySchema));
+            newVideo.Keywords = "test, music, video";
+            newVideo.Description = "Test Video";
+            newVideo.YouTubeEntry.Private = true;
+            newVideo.Tags.Add(new MediaCategory("DEVTEST", YouTubeNameTable.DeveloperTagSchema));
+
+            //newVideo.YouTubeEntry.Location = new GeoRssWhere(37, -122);
+            // alternatively, you could just specify a descriptive string
+            // newVideo.YouTubeEntry.setYouTubeExtension("location", "Mountain View, CA");
+
+            newVideo.YouTubeEntry.MediaSource = new MediaFileSource(
+                v.VideoPath,
+                "video/x-ms-wmv");
+
+            Console.Write("Uploading...");
+            Video createdVideo = User.YTRequest.Upload(User.YTUser, newVideo);
+            Console.WriteLine("Done!");
+
+            Console.WriteLine("VIDEO[title]: " + createdVideo.Title);
+            Console.WriteLine("VIDEO[id]: " + createdVideo.Id);
+            Console.WriteLine("VIDEO[media]: ");
+            foreach (Google.GData.YouTube.MediaContent mediaContent in createdVideo.Contents)
+            {
+                Console.WriteLine("\tMedia Location: " + mediaContent.Url);
+                Console.WriteLine("\tMedia Type: " + mediaContent.Format);
+                Console.WriteLine("\tDuration: " + mediaContent.Duration);
+            }
         }
     }
 }

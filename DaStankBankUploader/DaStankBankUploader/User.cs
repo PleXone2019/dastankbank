@@ -17,10 +17,26 @@ namespace DaStankBankUploader
         static String wpUser = "";
         static String wpPass = "";
         static String wpURL = "";
-        public static bool loggedIn = false;
 
         static YouTubeRequestSettings settings;
         static YouTubeRequest request;
+
+        public static bool loggedIn = false;
+
+        public static YouTubeRequest YTRequest
+        {
+            get { return request; }
+        }
+
+        public static YouTubeRequestSettings YTSettings
+        {
+            get { return settings; }
+        }
+
+        public static string YTUser
+        {
+            get { return ytUser; }
+        }
 
         public static bool login(string ytUser, string ytPass, string wpUser, string wpPass, string wpURL)
         {
