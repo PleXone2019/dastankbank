@@ -51,8 +51,12 @@ namespace DaStankBankUploader
         public VideoFromMusic v;
 
         // post data
+        // if these are set to "" then we'll use the saved default texts
         public string YTDesc = "";
         public string WPPost = "";
+
+        //youtube specific data
+        public string ytCat = "";
 
         public listMusicItem(string path, string bg, string outpath)
         {
@@ -84,8 +88,6 @@ namespace DaStankBankUploader
             }
 
             Console.WriteLine("Images Found: " + images.Length.ToString());
-
-            doDefaultTexts();
         }
 
         public void updatePaths(string bg, string outpath)
@@ -113,9 +115,17 @@ namespace DaStankBankUploader
             newVideo.Title = artist + " - " + title;
             newVideo.Tags.Add(new MediaCategory("Music", YouTubeNameTable.CategorySchema));
             newVideo.Keywords = "test, music, video";
-            newVideo.Description = YTDesc;
+
+            if (YTDesc == "")
+            {
+                newVideo.Description = Properties.Settings.Default.ytDesc;
+            }
+            else
+            {
+                newVideo.Description = YTDesc;
+            }
+
             newVideo.YouTubeEntry.Private = true;
-            newVideo.Tags.Add(new MediaCategory("DEVTEST", YouTubeNameTable.DeveloperTagSchema));
 
             //newVideo.YouTubeEntry.Location = new GeoRssWhere(37, -122);
             // alternatively, you could just specify a descriptive string

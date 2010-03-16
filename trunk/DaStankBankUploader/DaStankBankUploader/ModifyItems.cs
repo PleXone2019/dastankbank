@@ -49,6 +49,11 @@ namespace DaStankBankUploader
             // poll WP for categories
 
             // poll YT for categories
+            cmbYTCat.Items.Clear();
+            foreach (string key in User.YTCategories.Keys)
+            {
+                cmbYTCat.Items.Add(User.YTCategories[key]);
+            }
 
             // poll WP for tags
 
@@ -78,6 +83,15 @@ namespace DaStankBankUploader
             txtAlbum.Text = sel.album;
             txtArtist.Text = sel.artist;
             txtTitle.Text = sel.title;
+
+            if (sel.ytCat != "")
+            {
+                cmbYTCat.SelectedItem = sel.ytCat;
+            }
+            else
+            {
+                cmbYTCat.SelectedItem = null;
+            }
 
             // load data -- panel 2
             System.Drawing.Image.GetThumbnailImageAbort d = new Image.GetThumbnailImageAbort(ImageAborted);
@@ -125,7 +139,7 @@ namespace DaStankBankUploader
             }
             else
             {
-                txtYTDesc = sel.WPPost;
+                txtYTDesc.Text = sel.WPPost;
             }
 
             if (sel.YTDesc == "")
@@ -134,7 +148,7 @@ namespace DaStankBankUploader
             }
             else
             {
-                txtYTDesc = sel.YTDesc;
+                txtYTDesc.Text = sel.YTDesc;
             }
         }
 
@@ -149,10 +163,20 @@ namespace DaStankBankUploader
             Console.WriteLine("Saving...");
 
             listMusicItem i = (listMusicItem)lstItems.SelectedItem;
+
+            // panel 1
             i.artist = txtArtist.Text;
             i.album = txtAlbum.Text;
             i.title = txtTitle.Text;
 
+            if (cmbYTCat.SelectedItem != null)
+            {
+                i.ytCat = cmbYTCat.SelectedItem.ToString();
+            }
+
+            // panel 2
+
+            // panel 3 + 4
             if (txtYTDesc.Text != Properties.Settings.Default.ytDesc)
             {
                 i.YTDesc = txtYTDesc.Text;
@@ -183,11 +207,19 @@ namespace DaStankBankUploader
         private void button2_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.ytDesc = txtYTDesc.Text;
+            MessageBox.Show(
+                "Default set to: \n" + Properties.Settings.Default.ytDesc, 
+                "New Default Set!", 
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnWPPostDef_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.wpPost = txtWPPost.Text;
+            MessageBox.Show(
+                "Default set to: \n" + Properties.Settings.Default.wpPost,
+                "New Default Set!",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnWPPostReset_Click(object sender, EventArgs e)
