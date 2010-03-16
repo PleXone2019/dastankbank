@@ -16,6 +16,11 @@ namespace DaStankBankUploader
     public delegate void UIActions();
 
     /// <summary>
+    /// A set of actions to perform on the UI
+    /// </summary>
+    public delegate void UIActionsParam(object A);
+
+    /// <summary>
     /// A music item that's in the list.
     /// </summary>
     class listMusicItem : Object
@@ -63,9 +68,8 @@ namespace DaStankBankUploader
             {
                 AttachedPictureFrame ap = id3.AttachedPictureFrames.Items[i];
 
-                // :o SHOCK! HORROR! no seriously, who cares what goes wrong here...
-                try { images[i] = Image.FromStream(ap.Data); }
-                catch { }
+                // Empty catch!? :o SHOCK! HORROR! no seriously, who cares what goes wrong here...
+                try { images[i] = Image.FromStream(ap.Data); } catch { }
             }
 
             Console.WriteLine("Images Found: " + images.Length.ToString());
@@ -86,6 +90,11 @@ namespace DaStankBankUploader
         {
             v = new VideoFromMusic(path, bg, outpath);
             v.Render(pbarAudio, pbarVideo);
+        }
+
+        public void Upload(ProgressBar pbarStatus)
+        {
+            Console.WriteLine("WERD");
         }
     }
 }

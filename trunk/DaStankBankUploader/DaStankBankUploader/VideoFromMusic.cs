@@ -25,11 +25,23 @@ namespace DaStankBankUploader
     /// </summary>
     class VideoFromMusic
     {
+
         private string mp3path = "";
         private string mp3name = "";
         private string videoname = "";
         private string videopath = "";
         private string backgroundImage = "";
+
+        public string VideoPath
+        {
+            get { return videopath; }
+        }
+
+        public string VideoName
+        {
+            get { return videoname; }
+        }
+
         public WindowsMediaRenderer renderer;
 
         public PercentageProgressParticipant[] audioProgress = new PercentageProgressParticipant[1];

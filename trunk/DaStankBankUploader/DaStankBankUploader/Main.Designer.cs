@@ -41,7 +41,6 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRender = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,6 +50,9 @@
             this.pbarCurFileV = new System.Windows.Forms.ProgressBar();
             this.lblAudio = new System.Windows.Forms.Label();
             this.lblVideo = new System.Windows.Forms.Label();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // listFiles
@@ -180,16 +182,6 @@
             this.btnRender.UseVisualStyleBackColor = true;
             this.btnRender.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(126, 316);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(385, 18);
-            this.lblStatus.TabIndex = 6;
-            this.lblStatus.Text = "Make sure you\'ve finished editing each file before uploading!";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnRemove
             // 
             this.btnRemove.Location = new System.Drawing.Point(476, 12);
@@ -276,11 +268,30 @@
             this.lblVideo.TabIndex = 21;
             this.lblVideo.Text = "Video";
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip.Location = new System.Drawing.Point(0, 318);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(634, 23);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.TabIndex = 22;
+            this.statusStrip.Text = "status";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(140, 18);
+            this.lblStatus.Text = "toolStripStatusLabel1";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 340);
+            this.ClientSize = new System.Drawing.Size(634, 341);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.pbarCurFileV);
             this.Controls.Add(this.lblVideo);
             this.Controls.Add(this.pbarCurFileA);
@@ -298,7 +309,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnRender);
-            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnAddFolder);
             this.Controls.Add(this.lblItems);
             this.Controls.Add(this.btnAddFile);
@@ -311,6 +321,8 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Da Stank Bank Video Uploader";
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,7 +343,6 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRender;
-        private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Label label1;
@@ -341,5 +352,7 @@
         private System.Windows.Forms.ProgressBar pbarCurFileV;
         private System.Windows.Forms.Label lblAudio;
         private System.Windows.Forms.Label lblVideo;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }
