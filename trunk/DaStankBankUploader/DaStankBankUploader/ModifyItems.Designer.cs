@@ -484,7 +484,7 @@
             this.btnWPPostDef.Name = "btnWPPostDef";
             this.btnWPPostDef.Size = new System.Drawing.Size(401, 34);
             this.btnWPPostDef.TabIndex = 4;
-            this.btnWPPostDef.Text = "Set As Default";
+            this.btnWPPostDef.Text = "Set To All";
             this.btnWPPostDef.UseVisualStyleBackColor = true;
             // 
             // txtWPPost
@@ -552,7 +552,7 @@
             this.btnYTPostDef.Name = "btnYTPostDef";
             this.btnYTPostDef.Size = new System.Drawing.Size(401, 34);
             this.btnYTPostDef.TabIndex = 3;
-            this.btnYTPostDef.Text = "Set As Default";
+            this.btnYTPostDef.Text = "Set To All";
             this.btnYTPostDef.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
@@ -579,7 +579,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(283, 33);
             this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save Changes";
+            this.btnSave.Text = "Save Changes For Current File";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -590,8 +590,9 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(283, 33);
             this.btnCancel.TabIndex = 0;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Cancel Unsaved Changes and Close";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lstItems
             // 
