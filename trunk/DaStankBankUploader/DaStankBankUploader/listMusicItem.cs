@@ -139,7 +139,7 @@ namespace DaStankBankUploader
                 newVideo.Description = YTDesc;
             }
 
-            newVideo.YouTubeEntry.Private = true;
+            newVideo.YouTubeEntry.Private = false;
 
             //newVideo.YouTubeEntry.Location = new GeoRssWhere(37, -122);
             // alternatively, you could just specify a descriptive string
