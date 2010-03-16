@@ -58,6 +58,15 @@ namespace DaStankBankUploader
         //youtube specific data
         public string ytCat = "";
         public string ytTags = "";
+        private Video createdVideo;
+
+        /// <summary>
+        /// The youtube video (after it has been uploaded, null otherwise)
+        /// </summary>
+        public Video YTVideo
+        {
+            get { return createdVideo; }
+        }
 
         // wp specific data
         public string wpCat = "";
@@ -142,7 +151,7 @@ namespace DaStankBankUploader
                 /*"video/x-ms-wmv"*/);
 
             Console.Write("Uploading...");
-            Video createdVideo = User.YTRequest.Upload(User.YTUser, newVideo);
+            createdVideo = User.YTRequest.Upload(User.YTUser, newVideo);
             Console.WriteLine("Done!");
 
             Console.WriteLine("VIDEO[title]: " + createdVideo.Title);

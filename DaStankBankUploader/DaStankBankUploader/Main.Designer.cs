@@ -283,8 +283,8 @@
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(140, 18);
-            this.lblStatus.Text = "toolStripStatusLabel1";
+            this.lblStatus.Size = new System.Drawing.Size(46, 18);
+            this.lblStatus.Text = "Status";
             // 
             // Main
             // 
