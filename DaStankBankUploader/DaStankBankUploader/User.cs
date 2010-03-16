@@ -7,6 +7,7 @@ using Google.GData.Extensions;
 using Google.GData.YouTube;
 using Google.GData.Extensions.MediaRss;
 using Google.YouTube;
+using System.Xml;
 
 namespace DaStankBankUploader
 {
@@ -20,6 +21,36 @@ namespace DaStankBankUploader
 
         static YouTubeRequestSettings settings;
         static YouTubeRequest request;
+
+        /// <summary>
+        /// Youtube Categories
+        /// From: http://gdata.youtube.com/schemas/2007/categories.cat
+        /// </summary>
+        static Dictionary<string, string> cats = new Dictionary<string, string>();
+
+        public static Dictionary<string, string> YTCategories
+        {
+            get
+            {
+                if (cats.Count == 0)
+                {
+                    string catURL = "http://gdata.youtube.com/schemas/2007/categories.cat";
+
+                    Console.WriteLine("Getting YT Cats...");
+                    XmlTextReader xml = new XmlTextReader(catURL);
+                    while (xml.Read())
+                    {
+                        XmlNodeType nType = xml.NodeType;
+                        if (nType == XmlNodeType.Element && xml.Name.ToString() == "atom:category")
+                        {
+                            Console.WriteLine(xml["term"] + " -> " + xml["label"]);
+                            cats.Add(xml["term"], xml["label"]);
+                        }
+                    }
+                }
+                return cats;
+            }
+        }
 
         public static bool loggedIn = false;
 
@@ -54,29 +85,6 @@ namespace DaStankBankUploader
         }
 
         // youtube stuff
-
-        // Should get these from http://gdata.youtube.com/schemas/2007/categories.cat
-        public enum YTCatagory
-        {
-            Film,
-            Autos,
-            Music,
-            Animals,
-            Sports,
-            Travel,
-            Shortmov,
-            Videoblog,
-            Games,
-            Comedy,
-            People,
-            News,
-            Entertainment,
-            Education,
-            Howto,
-            Nonprofit,
-            Tech
-        }
-
         private static bool ytLogin()
         {
             //http://trailsinthesand.com/programmatically-uploading-videos-to-youtube/ 
