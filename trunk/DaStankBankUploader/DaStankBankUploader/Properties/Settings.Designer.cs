@@ -118,5 +118,33 @@ namespace DaStankBankUploader.Properties {
                 this["wpURL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Da Stank Bank\r\nMusic Blog For Drum & Bass, Dubstep, Electro\r\n\r\nYoutube:\r\nhttp://w" +
+            "ww.youtube.com/user/Dastankbank\r\nBlog:\r\nhttp://www.theootz.com/dastankbank/\r\nFac" +
+            "ebook:\r\nhttp://www.facebook.com/pages/Toronto-ON/Da-Stank-Bank/257926353411?ref=" +
+            "ts")]
+        public string ytDesc {
+            get {
+                return ((string)(this["ytDesc"]));
+            }
+            set {
+                this["ytDesc"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"%albumart%
+<object classid=""clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"" width=""480"" height=""295"" codebase=""http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0""><param name=""allowFullScreen"" value=""true"" /><param name=""allowscriptaccess"" value=""always"" /><param name=""src"" value=""http://www.youtube.com/v/%YTID%&hl=en_US&fs=1&rel=0&color1=0x3873bd&color2=0x3873bd"" /><param name=""allowfullscreen"" value=""true"" /><embed type=""application/x-shockwave-flash"" width=""480"" height=""295"" src=""http://www.youtube.com/v/%YTID%&hl=en_US&fs=1&rel=0&color1=0x3873bd&color2=0x3873bd"" allowscriptaccess=""always"" allowfullscreen=""true""></embed></object>")]
+        public string wpPost {
+            get {
+                return ((string)(this["wpPost"]));
+            }
+            set {
+                this["wpPost"] = value;
+            }
+        }
     }
 }

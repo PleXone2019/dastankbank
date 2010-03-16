@@ -58,19 +58,6 @@ namespace DaStankBankUploader
 
         private void doDefaultTexts()
         {
-            txtYTDesc.Text = @"Da Stank Bank
-Music Blog For Drum & Bass, Dubstep, Electro
-
-Youtube:
-http://www.youtube.com/user/Dastankbank
-Blog:
-http://www.theootz.com/dastankbank/
-Facebook:
-http://www.facebook.com/pages/Toronto-ON/Da-Stank-Bank/257926353411?ref=ts";
-
-            txtWPPost.Text = "%albumart% \n" +
-"<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" width=\"480\" height=\"295\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0\"><param name=\"allowFullScreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" /><param name=\"src\" value=\"http://www.youtube.com/v/%YTID%&hl=en_US&fs=1&rel=0&color1=0x3873bd&color2=0x3873bd\" /><param name=\"allowfullscreen\" value=\"true\" /><embed type=\"application/x-shockwave-flash\" width=\"480\" height=\"295\" src=\"http://www.youtube.com/v/%YTID%&hl=en_US&fs=1&rel=0&color1=0x3873bd&color2=0x3873bd\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed></object>";
-
             txtWPTags.Text = @"The following is a list of valid post tags:
 %albumart% - the album art image
 %YTvideo% - the embedded video (default settings)
@@ -131,9 +118,24 @@ http://www.facebook.com/pages/Toronto-ON/Da-Stank-Bank/257926353411?ref=ts";
                 txtAlbumPath.Text = "";
             }
 
-            // load data -- panel 3
+            // load data -- panel 3+4
+            if (sel.WPPost == "")
+            {
+                txtWPPost.Text = Properties.Settings.Default.wpPost;
+            }
+            else
+            {
+                txtYTDesc = sel.WPPost;
+            }
 
-            // load data -- panel 4
+            if (sel.YTDesc == "")
+            {
+                txtYTDesc.Text = Properties.Settings.Default.ytDesc;
+            }
+            else
+            {
+                txtYTDesc = sel.YTDesc;
+            }
         }
 
         // some random unused crap, meh
@@ -151,6 +153,24 @@ http://www.facebook.com/pages/Toronto-ON/Da-Stank-Bank/257926353411?ref=ts";
             i.album = txtAlbum.Text;
             i.title = txtTitle.Text;
 
+            if (txtYTDesc.Text != Properties.Settings.Default.ytDesc)
+            {
+                i.YTDesc = txtYTDesc.Text;
+            }
+            else
+            {
+                i.YTDesc = "";
+            }
+
+            if (txtWPPost.Text != Properties.Settings.Default.wpPost)
+            {
+                i.WPPost = txtWPPost.Text;
+            }
+            else
+            {
+                i.WPPost = "";
+            }
+
             Console.WriteLine("Done!");
         }
 
@@ -158,6 +178,26 @@ http://www.facebook.com/pages/Toronto-ON/Da-Stank-Bank/257926353411?ref=ts";
         {
             this.Dispose();
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ytDesc = txtYTDesc.Text;
+        }
+
+        private void btnWPPostDef_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.wpPost = txtWPPost.Text;
+        }
+
+        private void btnWPPostReset_Click(object sender, EventArgs e)
+        {
+            txtWPPost.Text = Properties.Settings.Default.wpPost;
+        }
+
+        private void btnYTDescReset_Click(object sender, EventArgs e)
+        {
+            txtYTDesc.Text = Properties.Settings.Default.ytDesc;
         }
     }
 }
